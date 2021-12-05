@@ -1,0 +1,14 @@
+.main-khoa {
+    flex:8;
+    background: #170f23;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+::-webkit-scrollbar {
+    width: 0.7rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background:#5d5765;
+  }

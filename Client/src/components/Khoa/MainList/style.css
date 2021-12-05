@@ -1,0 +1,18 @@
+.main-list-khoa {
+    display: flex;
+}
+
+.main-list-khoa .main-title {
+    display: flex;
+    color:#636370;
+    justify-content: space-between;
+    padding: 1rem;
+    margin: 1rem;
+    font-size:2rem;
+}
+
+.main-list-khoa .main-title .title-name, .main-list-khoa .main-title .title-singer, 
+.main-list-khoa .main-title .title-time, .main-list-khoa .main-title .title-like {
+    text-transform: uppercase;
+    flex:1;
+}
