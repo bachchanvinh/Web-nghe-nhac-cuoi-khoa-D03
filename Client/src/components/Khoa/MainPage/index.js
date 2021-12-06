@@ -3,6 +3,9 @@ import MainList from '../MainList'
 import MainMenu from '../MainMenu'
 import './style.css'
 import {data} from '../../../constants/data_fake'
+import CurrentSong from '../CurrentSong'
+import Player from '../Player'
+import NextSong from '../NextSong'
 
 const MainPage = () => {
     const [songs] = useState(data);
@@ -18,7 +21,7 @@ const MainPage = () => {
             return currentSongIndex + 1;
           }
         });
-      }, [currentSongIndex, songs.length]);
+      }, [currentSongIndex]);
     
     return (
         <div className="main-khoa">
@@ -29,6 +32,23 @@ const MainPage = () => {
                 setCurrentSongIndex={setCurrentSongIndex}
                 nextSongIndex={nextSongIndex}
                 songs={songs}
+                />
+            </div>
+
+            <div className="musicbar">
+                <CurrentSong 
+                  currentSongIndex={currentSongIndex}
+                  songs={songs}
+                />
+                <Player 
+                  currentSongIndex={currentSongIndex}
+                  setCurrentSongIndex={setCurrentSongIndex}
+                  nextSongIndex={nextSongIndex}
+                  songs={songs}
+                />
+                <NextSong 
+                  nextSongIndex={nextSongIndex}
+                  songs={songs}
                 />
             </div>
         </div>

@@ -5,7 +5,6 @@ import './style.css'
 const MainList = (props) => {
     return (
         <div className="row main-list-khoa">
-            {/* <MainItem  song={props.songs[props.currentSongIndex]} /> */}
             <div className="main-title">
                 <div className="title-name">Tên bài hát</div>
                 <p className="title-singer">Tên nghệ sĩ</p>

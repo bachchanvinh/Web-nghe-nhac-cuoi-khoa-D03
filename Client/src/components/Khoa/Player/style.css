@@ -1,0 +1,10 @@
+.c-player--audio {
+    height:3rem;
+    width: 70rem;
+    background-color: transparent;
+    
+}
+
+audio::-webkit-media-controls-play-button {
+    display: none;
+}
