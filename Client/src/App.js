@@ -10,8 +10,8 @@ function App() {
         <Router>
           <Routes >
             <Route path="/home" element={Home()} />
-            <Route exact path="/" element={Welcome()} />
-            <Route path="*" element={NotFound()} />
+            <Route path="/" element={<Welcome/>} />
+            <Route path="*" element={<NotFound/>} />
           </Routes>
         </Router>
     </div>

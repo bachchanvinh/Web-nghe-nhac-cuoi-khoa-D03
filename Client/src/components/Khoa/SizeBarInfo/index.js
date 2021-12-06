@@ -53,8 +53,7 @@ const SizeBarInfo = () => {
                 </div>
                 <div className="sizebar-menu">
                     <div className="sizebar-item">
-                        <i className="sizebar-item-icon fas fa-plus"></i>
-                        <span className="sizebar-item-text">Tạo playlist</span>
+                        <span className="sizebar-item-text">Playlist đã thích</span>
                     </div>
                 </div>
             </div>

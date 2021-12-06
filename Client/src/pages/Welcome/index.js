@@ -3,10 +3,10 @@ import {useNavigate } from 'react-router-dom'
 import './style.css'
 
 const Welcome = () => {
-    // let navigate = useNavigate()
+    let navigate = useNavigate()
 
     const navigateToHome = () => {
-        // navigate('/home');
+        navigate('home');
     }
 
     return (
