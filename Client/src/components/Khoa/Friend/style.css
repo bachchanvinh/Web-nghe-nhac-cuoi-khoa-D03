@@ -2,10 +2,12 @@
     flex:2;
     background: #231b2e;
     text-align: left;
+    display: flex;
+    flex-direction: column;
 }
 
 .friend-khoa .friend-wrap {
-    margin: 2rem 0;
+    margin: 2rem 0 0 0;
 }
 
 .friend-khoa .friend-heading {
@@ -56,4 +58,13 @@
 .friend-khoa .friend-list .friend-list-item .friend-list-name:hover { 
     cursor: pointer;
     color:rgba(255,255,255,0.6)
+}
+
+/* chat */
+.friend-khoa .chat-general {
+    background-color: white;
+    height: 39rem;
+    margin: 1rem 1rem 20rem;
+    position: relative;
+    border: 0.3rem solid rgba(0, 0, 0, 0.16);
 }

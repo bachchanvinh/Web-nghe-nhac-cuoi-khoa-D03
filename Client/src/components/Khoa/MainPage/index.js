@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import MainList from '../MainList'
 import MainMenu from '../MainMenu'
 import './style.css'
@@ -10,7 +10,6 @@ import NextSong from '../NextSong'
 const MainPage = () => {
     let [songs] = useState(data);
     const [keywordFilter, setKeywordFilter] = useState('')
-
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
     const [nextSongIndex, setNextSongIndex] = useState(0);
 
@@ -33,9 +32,10 @@ const MainPage = () => {
     }
 
     if(keywordFilter) {
-      songs = songs.filter((song) => {
-        return song.name.toLowerCase().indexOf(keywordFilter) !== -1 }
-      );
+      let newSong = songs.filter((song) => song.name.toLowerCase().indexOf(keywordFilter) !== -1);
+      if(newSong.length > 0) {
+        songs = newSong
+      }
     }
     
     return (

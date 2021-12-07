@@ -1,4 +1,5 @@
 import React from 'react'
+import ChatGeneral from '../ChatGeneral'
 import './style.css'
 
 const Friend = () => {
@@ -26,11 +27,10 @@ const Friend = () => {
                         <img alt="avatar" className="friend-list-img" src="/assets/vinh.jpg"></img>
                         <span className="friend-list-name">Đạt thành</span>
                     </div>
-                    <div className="friend-list-item">
-                        <img alt="avatar" className="friend-list-img" src="/assets/vinh.jpg"></img>
-                        <span className="friend-list-name">Hứa đại thành</span>
-                    </div>
                 </div>
+            </div>
+            <div className="chat-general">
+                <ChatGeneral />
             </div>
         </div>
     )

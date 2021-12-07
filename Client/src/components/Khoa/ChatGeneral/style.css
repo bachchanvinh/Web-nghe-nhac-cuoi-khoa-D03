@@ -1,0 +1,47 @@
+.chat-general-screen {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height:90%
+}
+
+.chat-general-screen .chat-general-group {
+    border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
+    margin:0.2rem;
+}
+
+.chat-general-screen .chat-general-group p {
+    margin: 0;
+    font-size:1.4rem;
+    padding:0.1rem
+}
+
+.chat-general-screen .chat-general-group .chat-name {
+    color:orange
+}
+
+.chat-general-form {
+    background: #242424;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content:center;
+    text-align: left;
+    position:absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height:10%
+}
+
+.chat-general-form .chat-general-form-item {
+    background: #242424;
+    display:block;
+    width: 100%;
+    padding:0.3rem;
+    margin: 0.1rem;
+    color: #fff;
+}
+
+.chat-general-form .chat-general-form-item:last-child {
+    border-top: 0.1rem solid rgba(255, 255, 255, 0.4);
+}
