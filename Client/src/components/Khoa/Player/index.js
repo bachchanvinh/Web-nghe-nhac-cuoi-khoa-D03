@@ -41,7 +41,7 @@ const Player = (props) => {
     }
 
     return (
-        <div>
+        <div className="player-khoa">
             <Control 
                 isPlaying={isPlaying}
                 setIsPlaying={setIsPlaying}

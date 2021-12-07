@@ -1,15 +1,16 @@
 import React from 'react'
+import {Link} from "react-router-dom"
 import './style.css'
 
 const SizeBarInfo = () => {
     return (
         <div className="sizebar-khoa">
             <div className="sizebar-wrap">
-                <a href="#">
+                <Link to={'/home'}>
                     <img className="sizebar-logo" 
                         src="/assets/ZingMp3-logo.png" alt="logo mp3"
                     />
-                </a>
+                </Link>
 
                 <div className="sizebar-menu">
                     <div className="sizebar-item">

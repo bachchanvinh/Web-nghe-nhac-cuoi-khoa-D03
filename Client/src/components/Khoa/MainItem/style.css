@@ -10,7 +10,6 @@
 
 .main-item-khoa:hover {
     background-color: #40454d;
-    cursor: pointer;
 }
 
 .main-item-khoa .details-info, .main-item-khoa .details-singer, 
@@ -29,16 +28,22 @@
     margin:0 2rem;
 }
 
-.main-item-khoa .details-info img:hover {
-
+.main-item-khoa .details-info .details-name {
+    background: inherit;
+    color: inherit
 }
 
 .main-item-khoa .details-info:hover .details-name, .main-item-khoa .details-singer:hover {
     color:var(--primary-color);
+    cursor: pointer;
 }
 
 .main-item-khoa .details-time {
     cursor: auto;
+}
+
+.main-item-khoa .details-like:hover {
+    cursor: pointer;
 }
 
 .main-item-khoa .details-like:hover .details-like-icon-fill {

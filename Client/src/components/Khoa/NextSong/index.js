@@ -3,9 +3,9 @@ import './style.css'
 
 const NextSong = (props) => {
     return (
-        <div className="musicbar-currentsong-khoa">
+        <div className="musicbar-nextsong-khoa">
             <h1>next song:</h1>
-            <div className="musicbar-currentsong-khoa-wrap">
+            <div className="musicbar-nextsong-khoa-wrap">
                 <img className="img" src={props.songs[props.nextSongIndex].img_src} alt="ava-song"/>
                 <div className="desc">
                     <p className="name">{props.songs[props.nextSongIndex].name}</p>

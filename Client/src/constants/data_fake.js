@@ -4,7 +4,7 @@ export const data =[
       name: "Tango Del Fuego",
       singer: "Parov Stelar",
       img_src: "./images/ParovStelarGeorgiaGibbs-TangoDelFuego.jpg",
-      src: "./music/ParovStelarGeorgiaGibbs-TangoDelFuego.mp3",
+      src: "https://firebasestorage.googleapis.com/v0/b/test-storage-e3c14.appspot.com/o/Mus%2FAlan%20Walker%20-%20Fade.mp3?alt=media&token=704cd299-f805-40de-b40e-ddd7ec2e64c1",
       url: '',
       time: '03:31'
     },

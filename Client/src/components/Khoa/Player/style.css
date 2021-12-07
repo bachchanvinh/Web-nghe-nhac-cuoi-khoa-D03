@@ -1,8 +1,11 @@
+.player-khoa {
+    flex:2;
+}
+
 .c-player--audio {
-    height:3rem;
+    height:2rem;
     width: 70rem;
-    background-color: transparent;
-    
+    margin-bottom: 1rem;
 }
 
 audio::-webkit-media-controls-play-button {

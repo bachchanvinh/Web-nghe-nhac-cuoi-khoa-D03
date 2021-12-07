@@ -8,7 +8,8 @@ import Player from '../Player'
 import NextSong from '../NextSong'
 
 const MainPage = () => {
-    const [songs] = useState(data);
+    let [songs] = useState(data);
+    const [keywordFilter, setKeywordFilter] = useState('')
 
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
     const [nextSongIndex, setNextSongIndex] = useState(0);
@@ -21,17 +22,34 @@ const MainPage = () => {
             return currentSongIndex + 1;
           }
         });
-      }, [currentSongIndex]);
+      }, [currentSongIndex, songs.length]);
+
+    const onHandleClickMusic = (uid) => {
+      setCurrentSongIndex(uid - 1)
+    }
+
+    const onSearch = (key) => {
+      setKeywordFilter(key.toLowerCase())
+    }
+
+    if(keywordFilter) {
+      songs = songs.filter((song) => {
+        return song.name.toLowerCase().indexOf(keywordFilter) !== -1 }
+      );
+    }
     
     return (
         <div className="main-khoa">
-            <MainMenu />
+            <MainMenu 
+              onSearch = {onSearch}
+            />
             <div className="container">
                 <MainList
                 currentSongIndex={currentSongIndex}
                 setCurrentSongIndex={setCurrentSongIndex}
                 nextSongIndex={nextSongIndex}
                 songs={songs}
+                onHandleClickMusic={onHandleClickMusic}
                 />
             </div>
 

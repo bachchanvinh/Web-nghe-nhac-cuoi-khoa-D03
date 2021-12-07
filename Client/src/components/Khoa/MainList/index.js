@@ -3,6 +3,7 @@ import MainItem from '../MainItem'
 import './style.css'
 
 const MainList = (props) => {
+    const {onHandleClickMusic} = props
     return (
         <div className="row main-list-khoa">
             <div className="main-title">
@@ -15,7 +16,9 @@ const MainList = (props) => {
             {props.songs.map((song) => {
                 return <MainItem  
                 key = {song.uid}
-                song={song} />
+                song={song}
+                handleClickMusic={onHandleClickMusic}
+                />
             })}
         </div>
     )

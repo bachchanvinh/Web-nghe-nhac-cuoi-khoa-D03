@@ -1,32 +1,49 @@
-/* .c-player--controls .skip-btn {
-    background: none;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    color: #888;
-    font-size: 10rem;
-  }
-
-.c-player--controls .skip-btn:hover {
-    transition: 0.5s ease-in-out;
-    transform: scale(1.1);
-    color: white;
-    background-color: inherit;
+.c-player--control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+    margin:0.3rem 0.5rem;
+    padding:1rem;
 }
 
-.c-player--controls .play-btn {
-    display: flex;
-    margin: 0 30px;
-    padding: 20px;
-    border-radius: 50%;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8),
-        -4px -4px 10px rgba(255, 255, 255, 0.4),
-        inset -4px -4px 10px rgba(0, 0, 0, 0.4),
-        inset 4px 4px 10px rgba(255, 255, 255, 0.4);
+.c-player--control .skip-btn {
+    background: transparent;
     border: none;
     outline: none;
-    background-color: #ffce00;
-    color: #fff;
-    font-size: 24px;
     cursor: pointer;
-} */
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 1rem;
+    border-radius:50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+  }
+
+.c-player--control .skip-btn:hover {
+    color: white;
+    background-color: #272230;
+}
+
+.c-player--control .play-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 3rem;
+    padding: 1rem;
+    border-radius: 50%;
+    border: 0.1rem solid white;
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all none;
+}
+
+.c-player--control .play-btn:hover {
+    color:var(--primary-color);
+    border: 0.1rem solid var(--primary-color);
+}
