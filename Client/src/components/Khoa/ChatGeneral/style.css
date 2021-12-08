@@ -1,7 +1,10 @@
 .chat-general-screen {
     overflow-y: scroll;
     overflow-x: hidden;
-    height:90%
+    height:90%;
+    display:flex;
+    flex-direction: column-reverse;
+    align-items: stretch;
 }
 
 .chat-general-screen .chat-general-group {

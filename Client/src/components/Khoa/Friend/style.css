@@ -4,6 +4,8 @@
     text-align: left;
     display: flex;
     flex-direction: column;
+    margin-bottom: 10rem;
+    justify-content:space-around;
 }
 
 .friend-khoa .friend-wrap {
@@ -63,8 +65,7 @@
 /* chat */
 .friend-khoa .chat-general {
     background-color: white;
-    height: 39rem;
-    margin: 1rem 1rem 20rem;
+    margin: 1rem 1rem 5rem;
     position: relative;
     border: 0.3rem solid rgba(0, 0, 0, 0.16);
 }
