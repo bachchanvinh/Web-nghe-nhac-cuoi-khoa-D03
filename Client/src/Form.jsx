@@ -12,10 +12,10 @@ const Form = () => {
   }
   return (
     <>
-      <div className='form-container'>
-         <Link to="/signin" className="close-btn">×</Link>
-        <div className='form-content-left'>
-          <img className='form-img' src='img/img-3.svg' alt='spaceship' />
+      <div className='form-container__khai'>
+         <Link to="/signin" className="close-btn__khai">×</Link>
+        <div className='form-content-left__khai'>
+          <img className='form-img__khai' src='img/img-3.svg' alt='spaceship' />
         </div>
         {!isSubmitted ? (
           <FormSignup submitForm={submitForm} />
