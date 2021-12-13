@@ -7,8 +7,8 @@ import Signin from './Signin'
 function App() {
   return (
     <Routes>
-        <Route exact path='/' element={<Form/>}/>
-        <Route path='/signin' element={<Signin/>}/>
+      <Route exact path='/signup' element={<Form />} />
+      <Route path='/signin' element={<Signin />} />
     </Routes>
   );
 }
