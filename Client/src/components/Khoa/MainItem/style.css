@@ -8,6 +8,10 @@
     font-size:2rem;
 }
 
+.main-item-khoa.active {
+    background-color: var(--primary-color);
+}
+
 .main-item-khoa:hover {
     background-color: #40454d;
 }
@@ -19,6 +23,7 @@
 
 .main-item-khoa .details-info {
     text-align:left;
+    display:flex;
 }
 
 .main-item-khoa .details-info img {
@@ -30,10 +35,12 @@
 
 .main-item-khoa .details-info .details-name {
     background: inherit;
-    color: inherit
+    color: inherit;
+    overflow-x:scroll;
+    text-align: left;
 }
 
-.main-item-khoa .details-info:hover .details-name, .main-item-khoa .details-singer:hover {
+.main-item-khoa .details-info:hover .details-name {
     color:var(--primary-color);
     cursor: pointer;
 }

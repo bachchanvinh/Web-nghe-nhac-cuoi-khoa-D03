@@ -1,24 +1,27 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import MainList from '../MainList'
 import MainMenu from '../MainMenu'
-import './style.css'
-import { data } from '../../../constants/data_fake'
 import CurrentSong from '../CurrentSong'
 import Player from '../Player'
 import NextSong from '../NextSong'
+import Slider from '../Slider'
 import { getMusics } from '../../../controller/firebase/firestore'
+import './style.css'
 
 const MainPage = () => {
-  let [songs, updateSongs] = useState(data);
-  const [isLogin, setLogin] = useState(true)
+  let [songs, updateSongs] = useState([]);
+  const [isLogin, setIsLogin] = useState(true)
   const [keywordFilter, setKeywordFilter] = useState('')
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [nextSongIndex, setNextSongIndex] = useState(0);
+  const [isActiveId, setIsActiveId] = useState(1)
+  const [rotate, setRotate] = useState(false);
+
   useEffect(() => {
     let data2 = []
     getMusics(data2, () => { updateSongs(data2) })
-    console.log(songs, "data")
   }, [])
+
   useEffect(() => {
     setNextSongIndex(() => {
       if (currentSongIndex + 1 > songs.length - 1) {
@@ -30,8 +33,8 @@ const MainPage = () => {
   }, [currentSongIndex, songs.length]);
 
   const onHandleClickMusic = (uid) => {
-    setCurrentSongIndex(uid - 1)
-    console.log(uid)
+      setIsActiveId(uid )
+      setCurrentSongIndex(uid - 1)
   }
 
   const onSearch = (key) => {
@@ -49,14 +52,18 @@ const MainPage = () => {
     <div className="main-khoa">
       <MainMenu
         onSearch={onSearch}
+        isLogin = {isLogin}
+        setIsLogin = {setIsLogin}
       />
+
+      <Slider songs={songs} onHandleClickMusic={onHandleClickMusic}/>
+
       <div className="container">
         <MainList
           currentSongIndex={currentSongIndex}
-          setCurrentSongIndex={setCurrentSongIndex}
-          nextSongIndex={nextSongIndex}
           songs={songs}
           onHandleClickMusic={onHandleClickMusic}
+          isActiveId={isActiveId}
         />
       </div>
 
@@ -64,12 +71,14 @@ const MainPage = () => {
         <CurrentSong
           currentSongIndex={currentSongIndex}
           songs={songs}
+          rotate={rotate}
         />
         <Player
           currentSongIndex={currentSongIndex}
           setCurrentSongIndex={setCurrentSongIndex}
           nextSongIndex={nextSongIndex}
           songs={songs}
+          setRotate={setRotate}
         />
         <NextSong
           nextSongIndex={nextSongIndex}

@@ -34,12 +34,12 @@ export async function getMusics(music, callBack) {
         // doc.data() is never undefined for query doc snapshots
         // console.log(doc.id, " => ", doc.data());
         music.push(doc.data())
-        console.log(music)
 
       });
     } catch (e) {
       console.error("Error get music ", e);
     }
+    music.sort((a, b) => a.uid - b.uid);
     callBack(music)
 
   } catch (e) {

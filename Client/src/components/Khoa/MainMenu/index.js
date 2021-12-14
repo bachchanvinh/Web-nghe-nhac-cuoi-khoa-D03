@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import {Link } from 'react-router-dom'
 import './style.css'
 
 const MainMenu = (props) => {
+    const {isLogin, setIsLogin} = props
     const [keyword,setKeyword] = useState('')
 
     const onChangeSearch = (e) => {
@@ -10,6 +12,19 @@ const MainMenu = (props) => {
         setKeyword(value)
         props.onSearch(keyword)
       }
+
+    const sign = () => {
+        if(!isLogin) {
+            return  <>
+            <Link to={"/signup"} className="sign-item">Đăng ký</Link>
+            <Link to={"/signin"} className="sign-item">Đăng nhập</Link>
+        </>
+        }
+
+        return <div className="user-info">
+                    <h1 className="user-name">Welcome, Khoa</h1>
+                </div>
+    }
 
     return (
         <div className="main-menu-khoa">
@@ -21,8 +36,11 @@ const MainMenu = (props) => {
                 placeholder="Nhập tên bài hát" />
             </div>
             <div className="sign">
-                <div className="sign-item">Đăng ký</div>
-                <div className="sign-item">Đăng nhập</div>
+                {/* {isLogin && <>
+                    <Link to={"/signup"} className="sign-item">Đăng ký</Link>
+                    <Link to={"/signin"} className="sign-item">Đăng nhập</Link>
+                </>} */}
+                {sign()}
             </div>
         </div>
     )
