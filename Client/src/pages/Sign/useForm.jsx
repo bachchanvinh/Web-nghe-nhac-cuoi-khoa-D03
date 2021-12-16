@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { upLoadphoto } from './controller/firebase/storage';
+
 
 const useForm = (callback, validate, signcallback, fileimg) => {
   const [values, setValues] = useState({
@@ -27,17 +27,6 @@ const useForm = (callback, validate, signcallback, fileimg) => {
     setErrors(validate(values));
     setIsSubmitting(true);
   };
-  // const handleClickupload = () => {
-  //   const getsrc = (src) => {
-  //     setValues({
-  //       ...values,
-  //       src_img: src
-  //     })
-
-  //   }
-  //   upLoadphoto(values.username, fileimg, getsrc)
-
-  // }
   useEffect(
     () => {
       if (Object.keys(errors).length === 0 && isSubmitting) {

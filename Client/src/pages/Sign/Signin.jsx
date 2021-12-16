@@ -1,7 +1,7 @@
 import React from "react";
 import validates from './validateInfo-signin';
 import useForm from './useForm';
-import { signinFunc } from "./controller/firebase/authen";
+import { signinFunc } from "../../controller/firebase/authen";
 import "./Signin.css";
 import { Link, useNavigate } from 'react-router-dom';
 

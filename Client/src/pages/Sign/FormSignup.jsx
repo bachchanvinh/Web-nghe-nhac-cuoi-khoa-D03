@@ -3,7 +3,7 @@ import validate from './validateInfo';
 import useForm from './useForm';
 import './Form.css';
 import { Link } from 'react-router-dom';
-import { signupFunc } from './controller/firebase/authen';
+import { signupFunc } from '../../controller/firebase/authen';
 
 const FormSignup = ({ submitForm }) => {
   const [imgUpload, setImg] = useState(null)

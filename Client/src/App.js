@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Welcome from './pages/Welcome'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
-import Form from './Form'
-import Signin from './Signin'
+import Form from './pages/Sign/Form'
+import Signin from './pages/Sign/Signin'
 
 function App() {
   return (
