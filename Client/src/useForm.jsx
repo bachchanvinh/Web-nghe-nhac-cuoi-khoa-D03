@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
+import { upLoadphoto } from './controller/firebase/storage';
 
-const useForm = (callback, validate) => {
+const useForm = (callback, validate, signcallback, fileimg) => {
   const [values, setValues] = useState({
     username: '',
     email: '',
     password: '',
-    password2: ''
+    password2: '',
+    status: '',
+    src_img: ''
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -20,15 +23,46 @@ const useForm = (callback, validate) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-
+    console.log(values)
     setErrors(validate(values));
     setIsSubmitting(true);
   };
+  // const handleClickupload = () => {
+  //   const getsrc = (src) => {
+  //     setValues({
+  //       ...values,
+  //       src_img: src
+  //     })
 
+  //   }
+  //   upLoadphoto(values.username, fileimg, getsrc)
+
+  // }
   useEffect(
     () => {
       if (Object.keys(errors).length === 0 && isSubmitting) {
-        callback();
+        console.log(values)
+        if (values.password2 === "") {
+          signcallback(values.email, values.password).then((res) => {
+            if (typeof res === "string") {
+              console.log(res)
+              setValues({
+                ...values, ['status']: "unvaild1123"
+              })
+              setErrors(validate(values))
+            }
+            else {
+              callback()
+            };
+          })
+        }
+        else {
+          console.log(values)
+          signcallback(values.email, values.password, values.username, fileimg)
+          callback()
+
+
+        }
       }
     },
     [errors]
