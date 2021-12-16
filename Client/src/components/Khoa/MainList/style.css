@@ -1,5 +1,6 @@
 .main-list-khoa {
     display: flex;
+    margin-bottom: 10%;
 }
 
 .main-list-khoa .main-title {

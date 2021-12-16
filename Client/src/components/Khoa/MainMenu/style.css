@@ -46,10 +46,20 @@
     background-color: #fff;
     padding: 1rem 2rem;
     border-radius: 4rem;
+    text-decoration: none;
 }
 
 .main-menu-khoa .sign .sign-item:hover {
     color:#fff;
     background-color:#2f2739;
     cursor: pointer;
+}
+
+.main-menu-khoa .user-info {
+    display: flex;
+    align-items: center;
+}
+
+.main-menu-khoa .user-name {
+    margin-left: 1rem;
 }

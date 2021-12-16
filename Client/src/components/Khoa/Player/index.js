@@ -3,23 +3,30 @@ import Control from '../Control'
 import './style.css'
 
 const Player = (props) => {
+    const {songs, currentSongIndex, setCurrentSongIndex, setRotate} = props
     const audioEl = useRef(null)
     const [isPlaying, setIsPlaying] = useState(false)
 
     useEffect(() => {
-        if (isPlaying) {
-            audioEl.current.play();
+        if(audioEl.current) {
+            if (isPlaying) {
+                audioEl.current.play();
+                setRotate(true)
+            }
+            else {
+                audioEl.current.pause()
+                setRotate(false)
+            }
         }
-        else audioEl.current.pause();
      })
 
     const SkipSong = (fowards = true) => {
         if(fowards) {
-            props.setCurrentSongIndex(() => {
-                let temp = props.currentSongIndex
+            setCurrentSongIndex(() => {
+                let temp = currentSongIndex
                 temp ++
 
-                if(temp > props.songs.length - 1) {
+                if(temp > songs.length - 1) {
                     temp = 0
                 }
                 return temp
@@ -27,12 +34,12 @@ const Player = (props) => {
         }
 
         else {
-            props.setCurrentSongIndex(() => {
-                let temp = props.currentSongIndex
+            setCurrentSongIndex(() => {
+                let temp = currentSongIndex
                 temp --
 
                 if(temp < 0) {
-                    temp = props.songs.length - 1
+                    temp = songs.length - 1
                 }
                 return temp
             })
@@ -47,12 +54,12 @@ const Player = (props) => {
                 setIsPlaying={setIsPlaying}
                 SkipSong={SkipSong}
             />
-            <audio
+            {songs[currentSongIndex] && <audio
                 className="c-player--audio"
                 controls
                 ref={audioEl}
-                src={props.songs[props.currentSongIndex].src}
-            ></audio>
+                src={songs[currentSongIndex].src}
+            ></audio> }
         </div>
     )
 }
