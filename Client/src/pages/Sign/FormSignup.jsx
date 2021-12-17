@@ -78,7 +78,7 @@ const FormSignup = ({ submitForm }) => {
           <input
             className='form-input__khai'
             type='file'
-            name='flie'
+            name='file'
             onChange={handleChangeimg}
           />
         </div>
