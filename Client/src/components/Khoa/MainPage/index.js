@@ -8,9 +8,11 @@ import Slider from '../Slider'
 import { getMusics } from '../../../controller/firebase/firestore'
 import './style.css'
 
-const MainPage = () => {
+const MainPage = (props) => {
   let [songs, updateSongs] = useState([]);
-  const [isLogin, setIsLogin] = useState(true)
+  const { userIn4, isLogin, onClickSignOut } = props
+  // const [userIn4, setUserIn4] = useState({})
+  // const [isLogin, setIsLogin] = useState(false)
   const [keywordFilter, setKeywordFilter] = useState('')
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [nextSongIndex, setNextSongIndex] = useState(0);
@@ -20,6 +22,15 @@ const MainPage = () => {
   useEffect(() => {
     let data2 = []
     getMusics(data2, () => { updateSongs(data2) })
+    // getSignedIn().then((res) => {
+    //   if (typeof res === "string") {
+    //     setIsLogin(true)
+    //     getUserin4(res, setUserIn4)
+    //   }
+    //   else setIsLogin(false)
+    // })
+
+
   }, [])
 
   useEffect(() => {
@@ -33,8 +44,8 @@ const MainPage = () => {
   }, [currentSongIndex, songs.length]);
 
   const onHandleClickMusic = (uid) => {
-      setIsActiveId(uid )
-      setCurrentSongIndex(uid - 1)
+    setIsActiveId(uid)
+    setCurrentSongIndex(uid - 1)
   }
 
   const onSearch = (key) => {
@@ -48,15 +59,18 @@ const MainPage = () => {
     }
   }
 
+
+
   return (
     <div className="main-khoa">
       <MainMenu
         onSearch={onSearch}
-        isLogin = {isLogin}
-        setIsLogin = {setIsLogin}
+        isLogin={isLogin}
+        onClickSignOut={onClickSignOut}
+        userIn4={userIn4}
       />
 
-      <Slider songs={songs} onHandleClickMusic={onHandleClickMusic}/>
+      <Slider songs={songs} onHandleClickMusic={onHandleClickMusic} />
 
       <div className="container">
         <MainList

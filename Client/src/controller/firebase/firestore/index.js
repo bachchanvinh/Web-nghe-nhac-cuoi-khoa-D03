@@ -21,24 +21,24 @@ export async function addDataMusic(music, ind) {
 
 export async function addDataUser(username, src, uid) {
   try {
-    const docRef = await firestore.addDoc(firestore.collection(db, "users"), {
+    await firestore.setDoc(firestore.doc(db, "users", uid), {
       uid: uid,
       userName: username,
       likedMusic: [],
       friendList: [],
       ava_src: src
     });
-    console.log("Document written with ID: ", docRef.id);
-    // updateDocument(docRef, docRef.id)//update UID
-  } catch (e) {
-    console.error("Error adding document: ", e);
   }
+  catch (e) {
+    console.error("Error writing document 'users': ", e)
+  }
+
 }
-async function updateDocument(ref, uid) {
-  await firestore.updateDoc(ref, {
-    uid: uid
-  });
-}
+// async function updateDocument(ref, uid) {
+//   await firestore.updateDoc(ref, {
+//     uid: uid
+//   });
+// }
 //-------------------------------------------------------------------------------------------------
 //Read data
 export async function getMusics(music, callBack) {
@@ -58,6 +58,28 @@ export async function getMusics(music, callBack) {
     callBack(music)
 
   } catch (e) {
+    console.log(e)
+  }
+
+}
+
+export async function getUserin4(uid, callback) {
+  const docRef = firestore.doc(db, "users", uid);
+  try {
+    const docSnap = await firestore.getDoc(docRef);
+
+    if (docSnap.exists()) {
+      let userin4 = docSnap.data()
+      callback(
+        userin4
+      )
+      console.log("Document data:", userin4);
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  }
+  catch (e) {
     console.log(e)
   }
 

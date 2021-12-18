@@ -36,6 +36,8 @@
 .main-menu-khoa .sign {
     display: flex;
     align-items: center;
+    width: 43%;
+    justify-content: space-around;
 }
 
 .main-menu-khoa .sign .sign-item {
@@ -47,6 +49,7 @@
     padding: 1rem 2rem;
     border-radius: 4rem;
     text-decoration: none;
+    width: 50%;
 }
 
 .main-menu-khoa .sign .sign-item:hover {
@@ -58,8 +61,28 @@
 .main-menu-khoa .user-info {
     display: flex;
     align-items: center;
+    justify-content: space-around;
 }
 
 .main-menu-khoa .user-name {
     margin-left: 1rem;
+}
+
+.main-menu-khoa .sign .user-info .friend-list-item {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 50%;
+    font-size: 3rem;
+    margin-right: 20px;
+}
+
+.main-menu-khoa .sign .user-info .friend-list-img {
+    width: 88px;
+    height: 88px;
+    object-fit: cover;
+    border-radius:50%;
+    cursor: pointer;
+    margin-right: 20px;
+
 }

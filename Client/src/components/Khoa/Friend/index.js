@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import FriendComponent from '../Friendcomponent'
 import ChatGeneral from '../ChatGeneral'
 import './style.css'
 
-const Friend = () => {
+const Friend = (props) => {
+    const { userIn4 } = props
+    const [handelpropschange, setChange] = useState(userIn4)
+    const [friendListUID, setFriendListUID] = useState(userIn4.friendList)
+    // const frienList = () => {
+    //     console.log(userIn4.frienList)
+    // }
+    useEffect(() => {
+        setChange(userIn4)
+        setFriendListUID(userIn4.friendList)
+
+        console.log(friendListUID)
+        // friendListUID.map((ele) => console.log(ele))
+    }, [friendListUID, handelpropschange])
     return (
         <div className="friend-khoa">
             <div className="friend-wrap">
@@ -11,22 +25,14 @@ const Friend = () => {
                     <i className="friend-heading-icon fas fa-user-plus"></i>
                 </div>
                 <div className="friend-list">
-                    <div className="friend-list-item">
-                        <img alt="avatar" className="friend-list-img" src="/assets/vinh.jpg"></img>
-                        <span className="friend-list-name">Chấn vinh</span>
-                    </div>
-                    <div className="friend-list-item">
-                        <img alt="avatar" className="friend-list-img" src="/assets/vinh.jpg"></img>
-                        <span className="friend-list-name">Đinh thương</span>
-                    </div>
-                    <div className="friend-list-item">
-                        <img alt="avatar" className="friend-list-img" src="/assets/vinh.jpg"></img>
-                        <span className="friend-list-name">Ánh như</span>
-                    </div>
-                    <div className="friend-list-item">
-                        <img alt="avatar" className="friend-list-img" src="/assets/vinh.jpg"></img>
-                        <span className="friend-list-name">Đạt thành</span>
-                    </div>
+
+                    {/* {
+                        friendlist.map((fr) => {
+                            <FriendComponent username={fr.userName} src={fr.ava_src} />
+                        })
+                    } */}
+                    <FriendComponent username={`vinh`} src={'/assets/vinh.jpg'} />
+
                 </div>
             </div>
             <div className="chat-general">

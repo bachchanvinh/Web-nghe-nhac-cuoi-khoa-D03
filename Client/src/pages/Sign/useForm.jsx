@@ -49,8 +49,6 @@ const useForm = (callback, validate, signcallback, fileimg) => {
           console.log(values)
           signcallback(values.email, values.password, values.username, fileimg)
           callback()
-
-
         }
       }
     },
