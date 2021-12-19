@@ -38,9 +38,9 @@ const MainList = (props) => {
                 {isDisplayPlaylist && <div className="title-like">Xóa khỏi playlist</div>}
             </div>
 
-            {songs.map((song) => {
+            {songs.map((song, idx) => {
                 return <MainItem  
-                key = {song.uid}
+                key = {idx}
                 song={song}
                 onHandleClickMusic={onHandleClickMusic}
                 currentSongIndex={currentSongIndex}

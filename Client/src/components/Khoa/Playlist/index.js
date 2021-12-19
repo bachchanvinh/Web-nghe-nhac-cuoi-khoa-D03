@@ -34,7 +34,6 @@ const Playlist = (props) => {
   const onHandleClickMusic = (uid) => {
       setIsActiveId(uid )
       setCurrentSongIndex(uid - 1)
-      console.log(uid)
   }
 
   const onSearch = (key) => {
@@ -46,7 +45,11 @@ const Playlist = (props) => {
       let newSongs = [...prev]
       let indexSongDel = prev.findIndex(item => item.name === song.name)
       newSongs.splice(indexSongDel, 1)
-      console.log(newSongs)
+      for(let i = 0; i < newSongs.length; i++) {
+        if(i >= indexSongDel) {
+          newSongs[i].uid --
+        }
+      }
       return [...newSongs]
     })
   }
