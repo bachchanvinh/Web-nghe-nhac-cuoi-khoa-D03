@@ -2,7 +2,9 @@ import React from 'react'
 import {Link} from "react-router-dom"
 import './style.css'
 
-const SizeBarInfo = () => {
+const SizeBarInfo = (props) => {
+    const {isDisplayPlaylist, onHandleOpenPlaylist} = props
+
     return (
         <div className="sizebar-khoa">
             <div className="sizebar-wrap">
@@ -53,8 +55,12 @@ const SizeBarInfo = () => {
                     </div>
                 </div>
                 <div className="sizebar-menu">
-                    <div className="sizebar-item">
-                        <span className="sizebar-item-text">Playlist đã thích</span>
+                    <div className={isDisplayPlaylist === true 
+                            ? "sizebar-item active" 
+                            : "sizebar-item"}>
+                        <span className="sizebar-item-text"
+                            onClick={() => onHandleOpenPlaylist()}
+                        >Playlist đã thích</span>
                     </div>
                 </div>
             </div>

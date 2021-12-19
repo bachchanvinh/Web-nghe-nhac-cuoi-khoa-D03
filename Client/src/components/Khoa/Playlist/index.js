@@ -4,11 +4,10 @@ import MainMenu from '../MainMenu'
 import CurrentSong from '../CurrentSong'
 import Player from '../Player'
 import NextSong from '../NextSong'
-import Slider from '../Slider'
-import { getMusics } from '../../../controller/firebase/firestore'
 import './style.css'
 
-const MainPage = (props) => {
+const Playlist = (props) => {
+  const { isDisplayPlaylist, data, setDataPlaylist} = props
   let [songs, updateSongs] = useState([]);
   const [isLogin, setIsLogin] = useState(true)
   const [keywordFilter, setKeywordFilter] = useState('')
@@ -19,9 +18,8 @@ const MainPage = (props) => {
   const [isPlaying, setIsPlaying] = useState(false)
 
   useEffect(() => {
-    let data2 = []
-    getMusics(data2, () => { updateSongs(data2) })
-  }, [])
+    updateSongs(data)
+  }, [data])
 
   useEffect(() => {
     setNextSongIndex(() => {
@@ -36,10 +34,21 @@ const MainPage = (props) => {
   const onHandleClickMusic = (uid) => {
       setIsActiveId(uid )
       setCurrentSongIndex(uid - 1)
+      console.log(uid)
   }
 
   const onSearch = (key) => {
     setKeywordFilter(key.toLowerCase())
+  }
+
+  const onHandleDelSong = (song) => {
+    setDataPlaylist(prev => {
+      let newSongs = [...prev]
+      let indexSongDel = prev.findIndex(item => item.name === song.name)
+      newSongs.splice(indexSongDel, 1)
+      console.log(newSongs)
+      return [...newSongs]
+    })
   }
 
   if (keywordFilter) {
@@ -49,19 +58,6 @@ const MainPage = (props) => {
     }
   }
 
-  const onHandleAddSong = (song) => {
-    props.setDataPlaylist(prev => {
-      let checkSong = prev.find(item => item.name === song.name)
-
-      if(checkSong) {
-        return [...prev]
-      }
-      song = {...song, uid: prev.length + 1}
-      let newSongs = [...prev, song]
-      return newSongs
-    })
-}
-
   return (
     <div className="main-khoa">
       <MainMenu
@@ -70,15 +66,16 @@ const MainPage = (props) => {
         setIsLogin = {setIsLogin}
       />
 
-      <Slider songs={songs} onHandleClickMusic={onHandleClickMusic}/>
-
       <div className="container">
         <MainList
           currentSongIndex={currentSongIndex}
           songs={songs}
           onHandleClickMusic={onHandleClickMusic}
           isActiveId={isActiveId}
-          onHandleAddSong={onHandleAddSong}
+          isDisplayPlaylist={isDisplayPlaylist}
+          isPlaying={isPlaying}
+          setIsPlaying={setIsPlaying}
+          onHandleDelSong={onHandleDelSong}
         />
       </div>
 
@@ -107,4 +104,4 @@ const MainPage = (props) => {
   )
 }
 
-export default MainPage
+export default Playlist
