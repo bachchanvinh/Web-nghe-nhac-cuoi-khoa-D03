@@ -21,6 +21,10 @@ const ChatGeneral = () => {
         });
     }, [])
 
+    useEffect(() => {
+        // đẩy messageList lên fb
+    }, [messageList])
+
     const handleSendMessage = (event) => {
         event.preventDefault();
         if (!socketRef.current) {
