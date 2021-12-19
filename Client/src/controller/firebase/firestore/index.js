@@ -70,9 +70,9 @@ export async function getUserin4(uid, callback) {
 
     if (docSnap.exists()) {
       let userin4 = docSnap.data()
-      callback(
-        userin4
-      )
+      callback(userin4)
+
+
       console.log("Document data:", userin4);
     } else {
       // doc.data() will be undefined in this case

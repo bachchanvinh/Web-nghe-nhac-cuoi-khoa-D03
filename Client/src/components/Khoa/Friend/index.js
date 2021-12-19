@@ -5,18 +5,14 @@ import './style.css'
 
 const Friend = (props) => {
     const { userIn4 } = props
-    const [handelpropschange, setChange] = useState(userIn4)
-    const [friendListUID, setFriendListUID] = useState(userIn4.friendList)
+    const [friendListUID, setFriendListUID] = useState([])
     // const frienList = () => {
     //     console.log(userIn4.frienList)
     // }
     useEffect(() => {
-        setChange(userIn4)
         setFriendListUID(userIn4.friendList)
-
         console.log(friendListUID)
-        // friendListUID.map((ele) => console.log(ele))
-    }, [friendListUID, handelpropschange])
+    }, [userIn4])
     return (
         <div className="friend-khoa">
             <div className="friend-wrap">
@@ -25,7 +21,6 @@ const Friend = (props) => {
                     <i className="friend-heading-icon fas fa-user-plus"></i>
                 </div>
                 <div className="friend-list">
-
                     {/* {
                         friendlist.map((fr) => {
                             <FriendComponent username={fr.userName} src={fr.ava_src} />

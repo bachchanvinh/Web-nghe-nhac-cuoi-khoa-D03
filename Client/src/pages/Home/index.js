@@ -12,7 +12,6 @@ const Home = () => {
     const [userIn4, setUserIn4] = useState({})
     const [isLogin, setIsLogin] = useState(false)
     const [check, setCheck] = useState({})
-    const [friendList, setFriendlist] = useState([])
     useEffect(() => {
         console.log(1)
 
@@ -20,7 +19,7 @@ const Home = () => {
             if (typeof res === "string") {
                 setIsLogin(true)
                 getUserin4(res, setUserIn4)
-                // let frlist = userIn4.friendList.map((ele) => console.log(ele))
+                return res
             }
             else setIsLogin(false)
         })
