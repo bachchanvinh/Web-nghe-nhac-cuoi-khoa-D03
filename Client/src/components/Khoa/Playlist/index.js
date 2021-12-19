@@ -4,15 +4,12 @@ import MainMenu from '../MainMenu'
 import CurrentSong from '../CurrentSong'
 import Player from '../Player'
 import NextSong from '../NextSong'
-import Slider from '../Slider'
-import { getMusics } from '../../../controller/firebase/firestore'
 import './style.css'
 
-const MainPage = (props) => {
+const Playlist = (props) => {
+  const { isDisplayPlaylist, data, setDataPlaylist, userIn4 } = props
   let [songs, updateSongs] = useState([]);
-  const { userIn4, isLogin, onClickSignOut } = props
-  // const [userIn4, setUserIn4] = useState({})
-  // const [isLogin, setIsLogin] = useState(false)
+  const [isLogin, setIsLogin] = useState(true)
   const [keywordFilter, setKeywordFilter] = useState('')
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [nextSongIndex, setNextSongIndex] = useState(0);
@@ -20,19 +17,10 @@ const MainPage = (props) => {
   const [rotate, setRotate] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false)
 
+
   useEffect(() => {
-    let data2 = []
-    getMusics(data2, () => { updateSongs(data2) })
-    // getSignedIn().then((res) => {
-    //   if (typeof res === "string") {
-    //     setIsLogin(true)
-    //     getUserin4(res, setUserIn4)
-    //   }
-    //   else setIsLogin(false)
-    // })
-
-
-  }, [])
+    updateSongs(data)
+  }, [data])
 
   useEffect(() => {
     setNextSongIndex(() => {
@@ -53,6 +41,20 @@ const MainPage = (props) => {
     setKeywordFilter(key.toLowerCase())
   }
 
+  const onHandleDelSong = (song) => {
+    setDataPlaylist(prev => {
+      let newSongs = [...prev]
+      let indexSongDel = prev.findIndex(item => item.name === song.name)
+      newSongs.splice(indexSongDel, 1)
+      for (let i = 0; i < newSongs.length; i++) {
+        if (i >= indexSongDel) {
+          newSongs[i].uid--
+        }
+      }
+      return [...newSongs]
+    })
+  }
+
   if (keywordFilter) {
     let newSong = songs.filter((song) => song.name.toLowerCase().indexOf(keywordFilter) !== -1);
     if (newSong.length > 0) {
@@ -60,29 +62,13 @@ const MainPage = (props) => {
     }
   }
 
-  const onHandleAddSong = (song) => {
-    props.setDataPlaylist(prev => {
-      let checkSong = prev.find(item => item.name === song.name)
-      console.log(checkSong)
-      if (checkSong) {
-        return [...prev]
-      }
-      song = { ...song, uid: prev.length + 1 }
-      let newSongs = [...prev, song]
-      return newSongs
-    })
-  }
-
   return (
     <div className="main-khoa">
       <MainMenu
         onSearch={onSearch}
         isLogin={isLogin}
-        onClickSignOut={onClickSignOut}
-        userIn4={userIn4}
+        setIsLogin={setIsLogin}
       />
-
-      <Slider songs={songs} onHandleClickMusic={onHandleClickMusic} />
 
       <div className="container">
         <MainList
@@ -90,7 +76,10 @@ const MainPage = (props) => {
           songs={songs}
           onHandleClickMusic={onHandleClickMusic}
           isActiveId={isActiveId}
-          onHandleAddSong={onHandleAddSong}
+          isDisplayPlaylist={isDisplayPlaylist}
+          isPlaying={isPlaying}
+          setIsPlaying={setIsPlaying}
+          onHandleDelSong={onHandleDelSong}
         />
       </div>
 
@@ -119,4 +108,4 @@ const MainPage = (props) => {
   )
 }
 
-export default MainPage
+export default Playlist

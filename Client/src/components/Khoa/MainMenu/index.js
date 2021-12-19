@@ -20,14 +20,15 @@ const MainMenu = (props) => {
                 <Link to={"/signin"} className="sign-item">Đăng nhập</Link>
             </>
         }
-        return <div className="user-info">
-            {/* <h1 className="user-name">Welcome, Khoa</h1> */}
-            <div className="friend-list-item">
-                <img alt="avatar" className="friend-list-img" src={userIn4.ava_src}></img>
-                <span className="friend-list-name">{userIn4.userName}</span>
+        if (userIn4 !== undefined) {
+            return <div className="user-info">
+                <div className="friend-list-item">
+                    <img alt="avatar" className="friend-list-img" src={userIn4.ava_src}></img>
+                    <span className="friend-list-name">{userIn4.userName}</span>
+                </div>
+                <button className='sign-item' onClick={onClickSignOut} >Đăng xuất</button>
             </div>
-            <button className='sign-item' onClick={onClickSignOut} >Đăng xuất</button>
-        </div>
+        }
     }
 
     return (

@@ -11,9 +11,10 @@ export async function addDataMusic(music, ind) {
       singer: music.singer,
       img_src: music.img_src,
       src: music.src,
+      time: music.time,
     });
     console.log("Document written with ID: ", docRef.id);
-    // updateDocument(docRef, docRef.id)//update UID
+    updateDocument(docRef, docRef.id)//update UID
   } catch (e) {
     console.error("Error adding document: ", e);
   }
@@ -34,11 +35,11 @@ export async function addDataUser(username, src, uid) {
   }
 
 }
-// async function updateDocument(ref, uid) {
-//   await firestore.updateDoc(ref, {
-//     uid: uid
-//   });
-// }
+async function updateDocument(ref, uid) {
+  await firestore.updateDoc(ref, {
+    uid_name: uid
+  });
+}
 //-------------------------------------------------------------------------------------------------
 //Read data
 export async function getMusics(music, callBack) {
@@ -49,6 +50,33 @@ export async function getMusics(music, callBack) {
         // doc.data() is never undefined for query doc snapshots
         // console.log(doc.id, " => ", doc.data());
         music.push(doc.data())
+
+      });
+    } catch (e) {
+      console.error("Error get music ", e);
+    }
+    music.sort((a, b) => a.uid - b.uid);
+    callBack(music)
+
+  } catch (e) {
+    console.log(e)
+  }
+
+}
+
+export async function getMusicsliked(likedmusics, music, callBack) {
+  try {
+    try {
+      const querySnapshot = await firestore.getDocs(firestore.collection(db, "musics"));
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        // console.log(doc.id, " => ", doc.data());
+        let res = doc.data()
+        if (likedmusics !== undefined) {
+          if (likedmusics.indexOf(res.uid_name) > -1) {
+            music.push(res)
+          }
+        }
 
       });
     } catch (e) {

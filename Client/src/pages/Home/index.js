@@ -4,6 +4,9 @@ import MainPage from '../../components/Khoa/MainPage'
 import Friend from '../../components/Khoa/Friend'
 import { getUserin4 } from '../../controller/firebase/firestore'
 import { getSignedIn, signOutfunc } from '../../controller/firebase/authen'
+import Playlist from '../../components/Khoa/Playlist'
+import { getMusicsliked } from '../../controller/firebase/firestore'
+// import { data } from '../../constants/playlist_fake'
 import './style.css'
 // import { addDataMusic } from '../../controller/firebase/firestore' //Chỉ dùng để push data lên firestore
 // import { dataOri } from '../../constants/dataorigin'//Chỉ dùng để push data lên firestore
@@ -13,8 +16,7 @@ const Home = () => {
     const [isLogin, setIsLogin] = useState(false)
     const [check, setCheck] = useState({})
     useEffect(() => {
-        console.log(check)
-
+        // console.log(check)
         getSignedIn(setCheck).then((res) => {
             if (typeof res === "string") {
                 setIsLogin(true)
@@ -28,11 +30,38 @@ const Home = () => {
         signOutfunc()
         setIsLogin(false)
     }
+    ///---------------Khoa-------------------------------------------------------------------
+    const [isDisplayPlaylist, setIsDisplayPlaylist] = useState(false)
+    const [dataPlaylist, setDataPlaylist] = useState([])
+    useEffect(() => {
+        let music = []
+        getMusicsliked(userIn4.likedMusic, music, setDataPlaylist)
+    }, [userIn4])
+
+    const onHandleOpenPlaylist = () => {
+        setIsDisplayPlaylist(!isDisplayPlaylist)
+    }
     return (
         <div className="home-khoa">
-            <SizeBarInfo />
-            <MainPage userIn4={userIn4} isLogin={isLogin} onClickSignOut={onClickSignOut} />
+            <SizeBarInfo
+                isDisplayPlaylist={isDisplayPlaylist}
+                onHandleOpenPlaylist={onHandleOpenPlaylist} />
+            {isDisplayPlaylist === false
+                ? <MainPage
+                    isLogin={isLogin}
+                    userIn4={userIn4}
+                    onClickSignOut={onClickSignOut}
+                    isDisplayPlaylist={isDisplayPlaylist}
+                    setDataPlaylist={setDataPlaylist}
+                />
+                : <Playlist
+                    isDisplayPlaylist={isDisplayPlaylist}
+                    data={dataPlaylist}
+                    setDataPlaylist={setDataPlaylist}
+                    userIn4={userIn4}
+                />}
             <Friend userIn4={userIn4} isLogin={isLogin} />
+
         </div>
     )
 }
