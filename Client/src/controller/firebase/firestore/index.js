@@ -19,12 +19,27 @@ export async function addDataMusic(music, ind) {
   }
 }
 
+export async function addDataUser(username, src, uid) {
+  try {
+    const docRef = await firestore.addDoc(firestore.collection(db, "users"), {
+      uid: uid,
+      userName: username,
+      likedMusic: [],
+      friendList: [],
+      ava_src: src
+    });
+    console.log("Document written with ID: ", docRef.id);
+    // updateDocument(docRef, docRef.id)//update UID
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+}
 async function updateDocument(ref, uid) {
   await firestore.updateDoc(ref, {
     uid: uid
   });
 }
-//-----------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 //Read data
 export async function getMusics(music, callBack) {
   try {

@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import validate from './validateInfo';
 import useForm from './useForm';
 import './Form.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { signupFunc } from '../../controller/firebase/authen';
 
 const FormSignup = ({ submitForm }) => {
+  const [imgUpload, setImg] = useState(null)
   const { handleChange, handleSubmit, values, errors } = useForm(
     submitForm,
-    validate
+    validate,
+    signupFunc,
+    imgUpload
   );
+  const handleChangeimg = (e) => {
+    if (e.target.files[0]) {
+      setImg(e.target.files[0]);
+    }
+  }
 
   return (
     <div className='form-content-right__khai'>
@@ -64,12 +73,21 @@ const FormSignup = ({ submitForm }) => {
           />
           {errors.password2 && <p>{errors.password2}</p>}
         </div>
+        <div className='form-inputs__khai'>
+          <label className='form-label__khai'>Avatar</label>
+          <input
+            className='form-input__khai'
+            type='file'
+            name='flie'
+            onChange={handleChangeimg}
+          />
+        </div>
         <button className='form-input-btn__khai' type='submit'>
           Đăng ký
         </button>
         <span className='form-input-login__khai'>
-          Bạn đã có tài khoản? 
-           <Link to='/signin'> Đăng nhập</Link>
+          Bạn đã có tài khoản?
+          <Link to='/signin'> Đăng nhập</Link>
         </span>
       </form>
     </div>
