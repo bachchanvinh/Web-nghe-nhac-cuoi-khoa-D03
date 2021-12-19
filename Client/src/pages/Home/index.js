@@ -13,7 +13,7 @@ const Home = () => {
     const [isLogin, setIsLogin] = useState(false)
     const [check, setCheck] = useState({})
     useEffect(() => {
-        console.log(1)
+        console.log(check)
 
         getSignedIn(setCheck).then((res) => {
             if (typeof res === "string") {
@@ -32,7 +32,7 @@ const Home = () => {
         <div className="home-khoa">
             <SizeBarInfo />
             <MainPage userIn4={userIn4} isLogin={isLogin} onClickSignOut={onClickSignOut} />
-            <Friend userIn4={userIn4} />
+            <Friend userIn4={userIn4} isLogin={isLogin} />
         </div>
     )
 }

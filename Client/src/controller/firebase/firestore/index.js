@@ -67,13 +67,10 @@ export async function getUserin4(uid, callback) {
   const docRef = firestore.doc(db, "users", uid);
   try {
     const docSnap = await firestore.getDoc(docRef);
-
     if (docSnap.exists()) {
       let userin4 = docSnap.data()
       callback(userin4)
-
-
-      console.log("Document data:", userin4);
+      // console.log("Document data:", userin4);
     } else {
       // doc.data() will be undefined in this case
       console.log("No such document!");
@@ -82,6 +79,27 @@ export async function getUserin4(uid, callback) {
   catch (e) {
     console.log(e)
   }
-
 }
 
+export async function getUsersin4ByUID(uidarray, callback, middelhandel) {
+  try {
+    try {
+      const querySnapshot = await firestore.getDocs(firestore.collection(db, "users"));
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        // console.log(doc.id, " => ", doc.data());
+        let res = doc.data()
+        if (uidarray.indexOf(res.uid) > -1) {
+          middelhandel.push(res)
+        }
+      });
+    } catch (e) {
+      console.error("Error get music ", e);
+    }
+    callback(middelhandel)
+  }
+  catch (e) {
+    console.log(e)
+  }
+
+}
