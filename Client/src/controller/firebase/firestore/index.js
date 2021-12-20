@@ -42,7 +42,7 @@ async function updateDocument(ref, uid) {
 }
 //-------------------------------------------------------------------------------------------------
 //Read data
-export async function getMusics(music, callBack) {
+export async function getMusics(music, callBack, callback2) {
   try {
     try {
       const querySnapshot = await firestore.getDocs(firestore.collection(db, "musics"));
@@ -57,6 +57,7 @@ export async function getMusics(music, callBack) {
     }
     music.sort((a, b) => a.uid - b.uid);
     callBack(music)
+    callback2(music)
 
   } catch (e) {
     console.log(e)

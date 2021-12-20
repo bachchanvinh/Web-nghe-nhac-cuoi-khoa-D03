@@ -10,7 +10,7 @@ const MainMenu = (props) => {
         const target = e.target
         const value = target.value
         setKeyword(value)
-        props.onSearch(keyword)
+        props.onSearch(value)
     }
 
     const sign = () => {

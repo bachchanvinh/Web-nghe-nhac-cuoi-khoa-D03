@@ -12,7 +12,7 @@ import './style.css'
 const MainPage = (props) => {
   let [songs, updateSongs] = useState([]);
   const { userIn4, isLogin, onClickSignOut } = props
-  // const [userIn4, setUserIn4] = useState({})
+  const [songsall, setsongsall] = useState([])
   // const [isLogin, setIsLogin] = useState(false)
   const [keywordFilter, setKeywordFilter] = useState('')
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
@@ -23,16 +23,7 @@ const MainPage = (props) => {
 
   useEffect(() => {
     let data2 = []
-    getMusics(data2, () => { updateSongs(data2) })
-    // getSignedIn().then((res) => {
-    //   if (typeof res === "string") {
-    //     setIsLogin(true)
-    //     getUserin4(res, setUserIn4)
-    //   }
-    //   else setIsLogin(false)
-    // })
-
-
+    getMusics(data2, () => { updateSongs(data2) }, () => { setsongsall(data2) })
   }, [])
 
   useEffect(() => {
@@ -52,14 +43,18 @@ const MainPage = (props) => {
 
   const onSearch = (key) => {
     setKeywordFilter(key.toLowerCase())
-  }
-
-  if (keywordFilter) {
-    let newSong = songs.filter((song) => song.name.toLowerCase().indexOf(keywordFilter) !== -1);
-    if (newSong.length > 0) {
-      songs = newSong
+    if (key === "") {
+      updateSongs(songsall)
+    }
+    else {
+      let newSong = songsall.filter((song) => song.name.toLowerCase().indexOf(key) !== -1);
+      if (newSong.length > 0) {
+        updateSongs(newSong)
+      }
     }
   }
+
+
 
   const onHandleAddSong = (song) => {
     props.setDataPlaylist(prev => {

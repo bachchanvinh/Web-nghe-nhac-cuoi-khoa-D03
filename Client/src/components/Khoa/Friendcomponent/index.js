@@ -3,7 +3,6 @@ import React, { useEffect } from 'react'
 const FriendComponent = (props) => {
 
     const { friendListin4 } = props
-
     return (
         <div className="friend-list">
             {friendListin4.map((inf, ind) => {
