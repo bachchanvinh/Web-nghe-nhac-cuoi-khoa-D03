@@ -9,15 +9,10 @@ const ChatGeneral = (props) => {
     const [messageList, setMessageList] = useState([]);
     const [isLogin, setIsLogin] = useState(isLoginprops);
     const socketRef = useRef(null);
-    const options = {
-        "force new connection": true,
-        reconnectionAttempts: "Infinity",
-        timeout: 10000,
-        transports: ["websocket"]
-    }
-    // http://localhost:8080
+
+    // https://web-nghe-nhac-sever.herokuapp.com
     useEffect(() => {
-        const socket = io("https://web-nghe-nhac.herokuapp.com/", options);
+        const socket = io("https://web-nghe-nhac-sever.herokuapp.com");
         socketRef.current = socket;
         setIsLogin(isLoginprops)
 
