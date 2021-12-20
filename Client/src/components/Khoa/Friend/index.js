@@ -1,8 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import FriendComponent from '../Friendcomponent'
 import ChatGeneral from '../ChatGeneral'
+import { getUsersin4ByUID } from '../../../controller/firebase/firestore'
 import './style.css'
 
-const Friend = () => {
+const Friend = (props) => {
+    const { userIn4, isLogin } = props
+    const [friendListUID, setFriendListUID] = useState([])
+    const [userName, setUserName] = useState(undefined)
+    const [friendListin4, setFriendListin4] = useState([])
+
+    useEffect(() => {
+        setFriendListUID(userIn4.friendList)
+        setUserName(userIn4.userName)
+        if (friendListUID !== undefined) {
+            let mid = []
+            getUsersin4ByUID(friendListUID, () => { setFriendListin4(mid) }, mid)
+
+        }
+    }, [userIn4, friendListUID])
     return (
         <div className="friend-khoa">
             <div className="friend-wrap">
@@ -10,27 +26,13 @@ const Friend = () => {
                     <div className="friend-heading-title">Người liên hệ</div>
                     <i className="friend-heading-icon fas fa-user-plus"></i>
                 </div>
-                <div className="friend-list">
-                    <div className="friend-list-item">
-                        <img alt="avatar" className="friend-list-img" src="/assets/vinh.jpg"></img>
-                        <span className="friend-list-name">Chấn vinh</span>
-                    </div>
-                    <div className="friend-list-item">
-                        <img alt="avatar" className="friend-list-img" src="/assets/vinh.jpg"></img>
-                        <span className="friend-list-name">Đinh thương</span>
-                    </div>
-                    <div className="friend-list-item">
-                        <img alt="avatar" className="friend-list-img" src="/assets/vinh.jpg"></img>
-                        <span className="friend-list-name">Ánh như</span>
-                    </div>
-                    <div className="friend-list-item">
-                        <img alt="avatar" className="friend-list-img" src="/assets/vinh.jpg"></img>
-                        <span className="friend-list-name">Đạt thành</span>
-                    </div>
-                </div>
+                {isLogin && <FriendComponent friendListin4={friendListin4} />}
             </div>
             <div className="chat-general">
-                <ChatGeneral />
+                <ChatGeneral
+                    isLoginprops={isLogin}
+                    userNameprops={userName}
+                />
             </div>
         </div>
     )

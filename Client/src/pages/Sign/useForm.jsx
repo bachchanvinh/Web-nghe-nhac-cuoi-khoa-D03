@@ -26,26 +26,29 @@ const useForm = (callback, validate, signcallback, fileimg) => {
     setErrors(validate(values));
     setIsSubmitting(true); 
   };
-  useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmitting) {
-      console.log(values);
-      if (values.password2 === "") {
-        signcallback(values.email, values.password).then((res) => {
-          if (typeof res === "string") {
-            console.log(res);
-            setValues({
-              ...values,
-              ["status"]: "unvaild1123",
-            });
-            setErrors(validate(values));
-          } else {
-            callback();
-          }
-        });
-      } else {
-        console.log(values);
-        signcallback(values.email, values.password, values.username, fileimg);
-        callback();
+  useEffect(
+    () => {
+      if (Object.keys(errors).length === 0 && isSubmitting) {
+        console.log(values)
+        if (values.password2 === "") {
+          signcallback(values.email, values.password).then((res) => {
+            if (typeof res === "string") {
+              console.log(res)
+              setValues({
+                ...values, ['status']: "unvaild1123"
+              })
+              setErrors(validate(values))
+            }
+            else {
+              callback()
+            };
+          })
+        }
+        else {
+          console.log(values)
+          signcallback(values.email, values.password, values.username, fileimg)
+          callback()
+        }
       }
     }
   }, [errors]);

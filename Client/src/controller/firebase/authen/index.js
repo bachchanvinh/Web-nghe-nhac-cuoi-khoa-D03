@@ -6,10 +6,9 @@ const auth = authfire.getAuth();
 export const signupFunc = (email, password, username, imgfile) => {
     authfire.createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            // Signed in 
             const user = userCredential.user;
-
             upLoadphoto(user.uid, imgfile).then((res) => {
+
                 addDataUser(username, res, user.uid)
             })
             // 
@@ -23,7 +22,7 @@ export const signupFunc = (email, password, username, imgfile) => {
             // return errorCode
         });
 }
-
+// ----------------------------------SIGN IN-----------------------------------------------------
 
 export const signinFunc = (email, password) => {
 
@@ -31,7 +30,8 @@ export const signinFunc = (email, password) => {
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            console.log(user)
+            // console.log(user)
+            console.log("signed in")
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -42,5 +42,37 @@ export const signinFunc = (email, password) => {
             return errorCode
         })
 
+
+}
+// -------------------------------GET SIGNED IN---------------------------------------------
+export const getSignedIn = (callback) => {
+    return new Promise((resolve, reject) => {
+        authfire.onAuthStateChanged(auth, (user) => {
+            callback(user)
+            if (user) {
+                // User is signed in, see docs for a list of available properties
+                // https://firebase.google.com/docs/reference/js/firebase.User
+                const uid = user.uid;
+                // console.log(uid)
+
+                resolve(uid)
+            } else {
+                // User is signed out
+                console.log("no account-signin")
+                resolve(false)
+            }
+        });
+    })
+}
+// ----------------------------------SIGN OUT---------------------------------------------
+export const signOutfunc = () => {
+    authfire.signOut(auth).then(() => {
+        console.log("Sign-out successful")
+
+        // Sign-out successful.
+    }).catch((error) => {
+        console.log("Sign-out error:", error)
+        // An error happened.
+    });
 
 }

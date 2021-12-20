@@ -3,9 +3,9 @@ import Control from '../Control'
 import './style.css'
 
 const Player = (props) => {
-    const {songs, currentSongIndex, setCurrentSongIndex, setRotate} = props
+    const {songs, currentSongIndex, setCurrentSongIndex,
+        setRotate, onHandleClickMusic, isPlaying, setIsPlaying} = props
     const audioEl = useRef(null)
-    const [isPlaying, setIsPlaying] = useState(false)
 
     useEffect(() => {
         if(audioEl.current) {
@@ -29,6 +29,7 @@ const Player = (props) => {
                 if(temp > songs.length - 1) {
                     temp = 0
                 }
+                onHandleClickMusic(songs[temp].uid)
                 return temp
             })
         }
@@ -41,11 +42,12 @@ const Player = (props) => {
                 if(temp < 0) {
                     temp = songs.length - 1
                 }
+                onHandleClickMusic(songs[temp].uid)
                 return temp
             })
         }
 
-    }
+    }   
 
     return (
         <div className="player-khoa">
@@ -59,6 +61,7 @@ const Player = (props) => {
                 controls
                 ref={audioEl}
                 src={songs[currentSongIndex].src}
+                onEnded={() => SkipSong()}
             ></audio> }
         </div>
     )
