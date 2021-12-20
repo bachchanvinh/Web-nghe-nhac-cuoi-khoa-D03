@@ -91,6 +91,13 @@ export async function getMusicsliked(likedmusics, music, callBack) {
 
 }
 
+export async function updateLikedMusic(uidUser, newLikedMusic) {
+  const ref = firestore.doc(db, "users", uidUser)
+  await firestore.updateDoc(ref, {
+    likedMusic: newLikedMusic
+  });
+}
+
 export async function getUserin4(uid, callback) {
   const docRef = firestore.doc(db, "users", uid);
   try {

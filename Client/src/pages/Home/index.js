@@ -27,7 +27,8 @@ const Home = () => {
         })
     }, [check])
     const onClickSignOut = () => {
-        signOutfunc()
+        if (window.confirm('Bạn có chắc đăng xuất không?')) { signOutfunc() }
+
         setIsLogin(false)
     }
     ///---------------Khoa-------------------------------------------------------------------

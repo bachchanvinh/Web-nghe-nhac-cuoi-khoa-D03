@@ -6,6 +6,7 @@ import Player from '../Player'
 import NextSong from '../NextSong'
 import Slider from '../Slider'
 import { getMusics } from '../../../controller/firebase/firestore'
+import { updateLikedMusic } from '../../../controller/firebase/firestore'
 import './style.css'
 
 const MainPage = (props) => {
@@ -63,12 +64,19 @@ const MainPage = (props) => {
   const onHandleAddSong = (song) => {
     props.setDataPlaylist(prev => {
       let checkSong = prev.find(item => item.name === song.name)
-      console.log(checkSong)
+      let songListUID = []
       if (checkSong) {
+        let songList = []
+        songList = [...prev]
+        songList.map((song) => songListUID.push(song.uid_name))
+        updateLikedMusic(userIn4.uid, songListUID)
         return [...prev]
       }
       song = { ...song, uid: prev.length + 1 }
+      // prev.map((ele) => console.log(ele.uid_name))
       let newSongs = [...prev, song]
+      newSongs.map((song) => songListUID.push(song.uid_name))
+      updateLikedMusic(userIn4.uid, songListUID)
       return newSongs
     })
   }
