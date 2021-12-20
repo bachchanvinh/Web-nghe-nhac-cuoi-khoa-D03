@@ -9,9 +9,9 @@ const ChatGeneral = (props) => {
     const [messageList, setMessageList] = useState([]);
     const [isLogin, setIsLogin] = useState(isLoginprops);
     const socketRef = useRef(null);
-
+    // http://localhost:8080
     useEffect(() => {
-        const socket = io("http://localhost:8080");
+        const socket = io("https://web-nghe-nhac.herokuapp.com/%20deployed%20to%20Heroku");
         socketRef.current = socket;
         setIsLogin(isLoginprops)
 
