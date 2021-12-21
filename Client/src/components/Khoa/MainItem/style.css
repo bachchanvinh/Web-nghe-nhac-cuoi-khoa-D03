@@ -39,7 +39,7 @@
 .main-item-khoa .details-info .details-name {
   background: inherit;
   color: inherit;
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
   text-align: left;
 }
 

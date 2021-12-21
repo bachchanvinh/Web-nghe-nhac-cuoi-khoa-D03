@@ -5,9 +5,9 @@
   overflow-y: auto;
 }
 
-/* ::-webkit-scrollbar {
-  width: 0.7rem;
-} */
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
 
 ::-webkit-scrollbar-thumb {
   background: #90e0ef;
