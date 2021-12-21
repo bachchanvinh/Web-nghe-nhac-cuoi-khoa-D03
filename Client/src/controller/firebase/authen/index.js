@@ -36,7 +36,7 @@ export const signinFunc = (email, password) => {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(typeof errorCode === "string")
+            // console.log(typeof errorCode === "string")
             console.log(errorMessage)
 
             return errorCode
@@ -53,12 +53,12 @@ export const getSignedIn = (callback) => {
                 // User is signed in, see docs for a list of available properties
                 // https://firebase.google.com/docs/reference/js/firebase.User
                 const uid = user.uid;
-                console.log(uid)
+                // console.log(uid)
 
                 resolve(uid)
             } else {
                 // User is signed out
-                console.log("no account-signin")
+                // console.log("no account-signin")
                 resolve(false)
             }
         });
@@ -67,7 +67,7 @@ export const getSignedIn = (callback) => {
 // ----------------------------------SIGN OUT---------------------------------------------
 export const signOutfunc = () => {
     authfire.signOut(auth).then(() => {
-        console.log("Sign-out successful")
+        // console.log("Sign-out successful")
 
         // Sign-out successful.
     }).catch((error) => {

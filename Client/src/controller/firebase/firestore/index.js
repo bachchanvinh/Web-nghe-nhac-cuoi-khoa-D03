@@ -26,7 +26,7 @@ export async function addDataUser(username, src, uid) {
       uid: uid,
       userName: username,
       likedMusic: [],
-      friendList: [],
+      friendList: ["zksX9UjOrXf7NHckIMURxin2qpe2", "l62WjpPQI5VgWpeblXiOVMq5eX43", "gnpEUE95nyY3fVmWd3UvwjAeTwt2"],
       ava_src: src
     });
   }
