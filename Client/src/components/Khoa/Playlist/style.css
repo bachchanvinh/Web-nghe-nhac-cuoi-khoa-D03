@@ -1,0 +1,6 @@
+@media (max-width: 790px) {
+  .musicbar-currentsong-khoa .musicbar-currentsong-khoa-wrap .desc {
+    padding: 0.1rem;
+    text-align: center;
+  }
+}

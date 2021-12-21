@@ -5,10 +5,12 @@ import { getUsersin4ByUID } from '../../../controller/firebase/firestore'
 import './style.css'
 
 const Friend = (props) => {
-    const { userIn4, isLogin } = props
+    const { userIn4, isLogin, handleOutMenuChat } = props
     const [friendListUID, setFriendListUID] = useState([])
     const [userName, setUserName] = useState(undefined)
     const [friendListin4, setFriendListin4] = useState([])
+    const [outMenuChat, setOutMenuChat] = useState(false)
+
 
     useEffect(() => {
         setFriendListUID(userIn4.friendList)
@@ -21,13 +23,14 @@ const Friend = (props) => {
     }, [userIn4, friendListUID])
     return (
         <div className="friend-khoa">
-            <div className="friend-wrap">
-                <div className="friend-heading">
-                    <div className="friend-heading-title">Người liên hệ</div>
-                    <i className="friend-heading-icon fas fa-user-plus"></i>
-                </div>
-                {isLogin && <FriendComponent friendListin4={friendListin4} />}
+            <div className="friend-heading">
+                <div className="friend-heading-title">Người liên hệ</div>
+                <p class="outMenuChat" onClick={handleOutMenuChat}>X</p>
             </div>
+            <div className="friend-wrap">
+                <div>{isLogin && <FriendComponent friendListin4={friendListin4} />}</div>
+            </div>
+
             <div className="chat-general">
                 <ChatGeneral
                     isLoginprops={isLogin}

@@ -10,3 +10,20 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 30px 8px;
     border: 0.1rem solid #fff
 }
+
+@media (max-width: 790px){
+
+    .swiper{
+        padding: 1.5rem;
+    }
+
+    .main-khoa .swiper img {
+        width: 22rem;
+        height: 22.3rem;
+        object-fit: cover;
+        border-radius: 1rem;
+        cursor: pointer;
+        margin-left: 5rem;
+    }
+    
+}

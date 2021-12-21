@@ -44,25 +44,50 @@
   letter-spacing: 2px;
   border: none;
   background-color: #0096c7;
-  color: #000000;
   font-size: 2rem;
   text-transform: uppercase;
   margin: 10px 0;
   padding: 15px 20px;
   border-radius: 5px;
+  color: white;
 }
 
 .welcome-khoa .welcome-row .welcome-row-text .btn:hover {
   box-shadow: 0 0 10px #d55d92;
 }
-h1{
-    font-size: 4rem;
+h1 {
+  font-size: 4rem;
 }
 
-h5{
+h5 {
   color: white;
 }
 
-.typing{
+.typing {
   color: #25a244;
+}
+
+@media (max-width: 790px) {
+  .welcome-khoa .welcome-row .welcome-row-img .head-phone-img {
+    width: 160%;
+  }
+
+  .welcome-khoa .welcome-row .welcome-row-text {
+    width: 250px;
+    font-size: 20px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .welcome-khoa .welcome-row .welcome-row-text .btn {
+    padding: 5px 50px;
+    color: white;
+  }
+
+  .typing{
+    height: 50px;
+    width: 150px;
+  }
 }

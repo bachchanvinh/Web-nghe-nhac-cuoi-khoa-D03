@@ -1,42 +1,70 @@
 .musicbar-nextsong-khoa {
-    display: flex;
-    align-items: center;
-    flex:1;
+  display: flex;
+  align-items: center;
+  flex: 1;
 }
 
 .musicbar-nextsong-khoa > h1 {
-    margin-right: 3rem;
-    color:#696969;
+  margin-right: 3rem;
+  color: #696969;
+  font-size: 150%;
 }
 
 .musicbar-nextsong-khoa .musicbar-nextsong-khoa-wrap {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .musicbar-nextsong-khoa .musicbar-nextsong-khoa-wrap .img {
-    width: 6.5rem;
-    height: 6.5rem;
-    border-radius: 50%;
-    border: 0.2rem solid #D3D3D3;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 6.5rem;
+  height: 6.5rem;
+  border-radius: 50%;
+  border: 0.2rem solid #d3d3d3;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .musicbar-nextsong-khoa .musicbar-nextsong-khoa-wrap .desc {
-    padding:2rem;
-    text-align: left;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  text-align: left;
 }
 
 .musicbar-nextsong-khoa .musicbar-nextsong-khoa-wrap .desc p {
-    margin:0
+  margin: 0;
 }
 
 .musicbar-nextsong-khoa .desc .name {
-    font-size: 1.6rem;
-    font-weight: 500;
+  font-size: 10px;
+  font-weight: 500;
 }
 
 .musicbar-nextsong-khoa .desc .singer {
-    font-size: 1.4rem;
-    opacity:0.5
+  font-size: 1.4rem;
+  opacity: 0.5;
+}
+
+@media (max-width: 790px){
+  .musicbar {
+    width: 100%;
+  }
+
+  .musicbar-nextsong-khoa {
+    height: 100%;
+  }
+
+  .musicbar-nextsong-khoa .musicbar-nextsong-khoa-wrap .desc {
+    padding: 2px;
+    text-align: left;
+  }
+  
+  .musicbar-nextsong-khoa .musicbar-nextsong-khoa-wrap .desc p {
+    font-size: 10px;
+  }
+
+  .musicbar-nextsong-khoa .musicbar-nextsong-khoa-wrap .img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    border: 0.2rem solid #d3d3d3;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
 }

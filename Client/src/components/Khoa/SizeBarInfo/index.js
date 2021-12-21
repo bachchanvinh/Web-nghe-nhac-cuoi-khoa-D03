@@ -1,17 +1,15 @@
 import React from 'react'
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 import './style.css'
 
 const SizeBarInfo = (props) => {
-    const {isDisplayPlaylist, onHandleOpenPlaylist} = props
+    const { isDisplayPlaylist, onHandleOpenPlaylist } = props
 
     return (
         <div className="sizebar-khoa">
             <div className="sizebar-wrap">
                 <Link to={'/home'}>
-                    <img className="sizebar-logo" 
-                        src="/assets/ZingMp3-logo.png" alt="logo mp3"
-                    />
+                    <h1 className="logo">Listen<p className="blue">To</p><p className="yellow">ge</p><p className="orange">ther</p></h1>
                 </Link>
 
                 <div className="sizebar-menu">
@@ -55,12 +53,12 @@ const SizeBarInfo = (props) => {
                     </div>
                 </div>
                 <div className="sizebar-menu">
-                    <div className={isDisplayPlaylist === true 
-                            ? "sizebar-item active" 
-                            : "sizebar-item"}>
-                        <span className="sizebar-item-text"
-                            onClick={() => onHandleOpenPlaylist()}
-                        >Playlist đã thích</span>
+                    <div className={isDisplayPlaylist === true
+                        ? "sizebar-item active"
+                        : "sizebar-item"} onClick={() => onHandleOpenPlaylist()}>
+                            <i className="details-like-icon-empty details-like-icon fas fa-heart"></i>
+                            <span className="sizebar-item-text"
+                            >Playlist đã thích</span>
                     </div>
                 </div>
             </div>

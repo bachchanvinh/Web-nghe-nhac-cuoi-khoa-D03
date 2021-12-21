@@ -11,3 +11,13 @@
 audio::-webkit-media-controls-play-button {
     display: none;
 }
+
+
+@media (max-width: 790px){
+    .player-khoa{
+        width: 50%;
+    }
+    .c-player--audio {
+        width: 80%;
+    }
+}

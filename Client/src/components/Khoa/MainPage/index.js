@@ -19,10 +19,12 @@ const MainPage = (props) => {
   const [isActiveId, setIsActiveId] = useState(1)
   const [rotate, setRotate] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false)
+  const [sliderMusic, setSliderMusic] = useState([])
 
   useEffect(() => {
     let data2 = []
     getMusics(data2, () => { updateSongs(data2) })
+    setSliderMusic(data2)
     // getSignedIn().then((res) => {
     //   if (typeof res === "string") {
     //     setIsLogin(true)
@@ -82,7 +84,7 @@ const MainPage = (props) => {
         userIn4={userIn4}
       />
 
-      <Slider songs={songs} onHandleClickMusic={onHandleClickMusic} />
+      <Slider songs={sliderMusic} onHandleClickMusic={onHandleClickMusic} />
 
       <div className="container">
         <MainList

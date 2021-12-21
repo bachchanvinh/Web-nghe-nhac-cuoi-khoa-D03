@@ -4,7 +4,8 @@
     display:flex;
     flex-direction: column-reverse;
     align-items: stretch;
-    height: 40rem;
+    height: 25rem;
+    width: 20rem;
 }
 
 .chat-general-screen .chat-general-group {
@@ -23,6 +24,12 @@
 
 .chat-general-screen .chat-general-group .chat-name {
     color:orange
+}
+
+.chat-general-screen .chat-general-group .chat-mess{
+    max-width: 90%;
+    overflow-wrap: break-word;
+    color: teal;
 }
 
 .chat-general-form {
@@ -59,8 +66,8 @@
     background: #242424;
     display:block;
     width: 100%;
-    padding:0.3rem;
-    margin: 0.1rem;
+    /* padding:0.3rem; */
+    /* margin: 0.1rem; */
     color: #fff;
     text-transform: none;
 }
@@ -72,4 +79,12 @@
 .chat-general-group.my-message {
     align-items:flex-end;
   }
-  
+
+/* @media (max-width: 790px){
+    .chat-general-screen {
+        display: fixed;
+        height: 500px;
+        width: 300px;
+        z-index: 999;
+    }
+} */

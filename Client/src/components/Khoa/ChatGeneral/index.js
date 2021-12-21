@@ -11,7 +11,7 @@ const ChatGeneral = (props) => {
     const socketRef = useRef(null);
 
     useEffect(() => {
-        const socket = io("http://localhost:8080");
+        const socket = io("https://web-nghe-nhac-sever.herokuapp.com");
         socketRef.current = socket;
         setIsLogin(isLoginprops)
 

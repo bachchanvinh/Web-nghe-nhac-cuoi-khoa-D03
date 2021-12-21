@@ -7,7 +7,7 @@ const Welcome = () => {
     let navigate = useNavigate()
 
     const navigateToHome = () => {
-        navigate('/signin');
+        navigate('/home');
     }
 
     return (
@@ -18,25 +18,25 @@ const Welcome = () => {
                 </div>
 
                 <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6 welcome-row-item welcome-row-text">
-                    <h1>Music for everyone</h1>
-                    <p>Without music, life would be a mistake</p>
+                    <h1>Âm nhạc cho tất cả</h1>
+                    <p>Không có âm nhạc, cuộc sống thật tẻ nhạt!</p>
                     <div className="typing">
                     <Typical
                         loop={Infinity}
                         wrapper="b"
                         steps={[
-                            '10 000+ Songs',
-                            1200,
-                            'Dowload music',
-                            1200,
-                            'No ad interruptions',
-                            1200,
-                            'Play any song',
-                            1200,
+                            'hơn 10.000 bài hát',
+                            1500,
+                            'Tải nhạc miễn phí',
+                            1500,
+                            'Không chứa quảng cáo',
+                            1500,
+                            'Nghe bất kì đâu',
+                            1500,
                         ]}
                     />
                     </div>
-                    <button onClick={navigateToHome} className="btn">Start Listening<h5>and get 3 months Premium member for free </h5></button>
+                    <button onClick={navigateToHome} className="btn">Tham gia ngay</button>
                 </div>
             </div>
         </div>

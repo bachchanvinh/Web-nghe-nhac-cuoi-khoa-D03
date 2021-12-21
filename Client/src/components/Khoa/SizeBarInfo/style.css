@@ -1,51 +1,123 @@
 .sizebar-khoa {
-    flex:2;
-    background: #231b2e;
-    text-align: left;
+  flex: 2;
+  background: #0096c7;
+  text-align: left;
+  overflow: scroll;
 }
 
 .sizebar-khoa .sizebar-wrap {
-    margin: 2rem 3rem;
+  margin: 2rem 3rem;
+}
+
+.sizebar-khoa .sizebar-wrap .logo{
+  font-size: 2rem;
+  color: white;
+}
+
+.blue{
+  font-size: 2rem;
+  color: #90e0ef;
+}
+.yellow{
+  font-size: 2rem;
+  color: #fdbe01;
+  text-transform: lowercase;
+}
+.orange{
+  font-size: 2rem;
+  color: #d55d92;
+  text-transform: lowercase;
+}
+
+a{
+  text-decoration: none;
 }
 
 .sizebar-khoa .sizebar-wrap .sizebar-logo {
-    width: 80%;
-    padding:0 1rem;
+  width: 80%;
+  padding: 0 1rem;
 }
 
 .sizebar-khoa .sizebar-menu {
-    padding:1.5rem;
+  padding: 1.5rem;
 }
 
 .sizebar-khoa .sizebar-menu:not(:last-child) {
-    border-bottom: 1px solid rgba(255,255,254,0.1);
+  border-bottom: 1px solid rgba(255, 255, 254, 0.1);
 }
 
 .sizebar-khoa .sizebar-menu .sizebar-item {
-    color:white;
-    font-size: 2.5rem;
-    padding:0.2rem 0.3rem;
-    margin:0.5rem;
-    position: relative;
+  color: white;
+  font-size: 2rem;
+  padding: 0.2rem 0.5rem;
+  margin: 0.3rem;
+  position: relative;
+  width: 200px;
 }
 
 .sizebar-khoa .sizebar-menu .sizebar-item:hover {
-    cursor: pointer;
-    color:rgba(255,255,255,0.6)
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .sizebar-khoa .sizebar-menu .sizebar-item.active {
-    border-left: 2px solid var(--primary-color);
-    background-color: rgba(255, 255, 255, 0.1); 
+  border-left: 2px solid #274c77;
+  background-color: #274c77;
+
 }
 
 .sizebar-khoa .sizebar-item .sizebar-item-text .sizebar-item-live {
-    background:red;
-    color:white;
-    padding:0.5rem 1rem;
-    border-radius: 0.3rem;
-    margin-left: 0.8rem;
-    font-size:1.2rem;
-    position:absolute;
-    top:0.8rem
+  background: red;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  margin-left: 0.8rem;
+  font-size: 1.2rem;
+  position: absolute;
+  top: 0.8rem;
+}
+
+span{
+  font-size: 50%;
+  margin-left: 10px;
+}
+
+p{
+  display: inline-block;
+}
+
+@media (max-width: 790px){
+  .sizebar-khoa{
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .sizebar-khoa .sizebar-wrap {
+    margin: 0.5rem 0.5rem;
+  }
+  
+  .sizebar-khoa .sizebar-menu .sizebar-item .sizebar-item-text {
+    display: none;
+  }
+
+  .sizebar-khoa .sizebar-menu {
+    padding: 0.1rem;
+  }
+
+  .sizebar-khoa .sizebar-wrap .logo {
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .sizebar-khoa .sizebar-menu .sizebar-item {
+    color: white;
+    font-size: 2rem;
+    padding: 0.2rem 0.5rem;
+    margin: 0.5rem;
+    position: relative;
+    width: 80%;
+  }
+  
 }

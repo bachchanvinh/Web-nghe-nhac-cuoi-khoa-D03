@@ -51,7 +51,7 @@ const useForm = (callback, validate, signcallback, fileimg) => {
         }
       }
     }
-  }, [errors]);
+  , [errors]);
 
   return { handleChange, handleSubmit, values, errors };
 };

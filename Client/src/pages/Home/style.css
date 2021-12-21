@@ -3,5 +3,13 @@
     text-align: center;
     display: flex;
     justify-content: space-between;
-    background: #231b2e
+    background: #0096c7;
+}
+
+@media (max-width: 790px){
+    .home-khoa{
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 9fr;
+    }
 }
