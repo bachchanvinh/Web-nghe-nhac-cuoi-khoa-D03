@@ -10,6 +10,7 @@ const ChatGeneral = (props) => {
     const [isLogin, setIsLogin] = useState(isLoginprops);
     const socketRef = useRef(null);
 
+    // https://web-nghe-nhac-sever.herokuapp.com
     useEffect(() => {
         const socket = io("https://web-nghe-nhac-sever.herokuapp.com");
         socketRef.current = socket;

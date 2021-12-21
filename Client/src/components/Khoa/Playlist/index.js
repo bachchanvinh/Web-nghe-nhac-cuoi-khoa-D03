@@ -4,6 +4,7 @@ import MainMenu from '../MainMenu'
 import CurrentSong from '../CurrentSong'
 import Player from '../Player'
 import NextSong from '../NextSong'
+import { updateLikedMusic } from '../../../controller/firebase/firestore'
 import './style.css'
 
 const Playlist = (props) => {
@@ -51,6 +52,9 @@ const Playlist = (props) => {
           newSongs[i].uid--
         }
       }
+      let songListUID = []
+      newSongs.map((song) => songListUID.push(song.uid_name))
+      updateLikedMusic(userIn4.uid, songListUID)
       return [...newSongs]
     })
   }

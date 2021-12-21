@@ -53,7 +53,9 @@ export default function Signin() {
         <button className="form-signin-btn__khai">Đăng nhập</button>
         <span className='form-input-signin__khai'>
           Bạn chưa có tài khoản?
-          <Link to='/signup'> Đăng ký ngay</Link>
+          <Link to='/signup'> Đăng ký ngay </Link><pre />
+          Hoặc về
+          <Link to='/home'> Trang chủ</Link>
         </span>
       </form>
     </div>

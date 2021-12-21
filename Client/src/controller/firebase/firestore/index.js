@@ -26,7 +26,7 @@ export async function addDataUser(username, src, uid) {
       uid: uid,
       userName: username,
       likedMusic: [],
-      friendList: [],
+      friendList: ["zksX9UjOrXf7NHckIMURxin2qpe2", "l62WjpPQI5VgWpeblXiOVMq5eX43", "gnpEUE95nyY3fVmWd3UvwjAeTwt2"],
       ava_src: src
     });
   }
@@ -42,7 +42,7 @@ async function updateDocument(ref, uid) {
 }
 //-------------------------------------------------------------------------------------------------
 //Read data
-export async function getMusics(music, callBack) {
+export async function getMusics(music, callBack, callback2) {
   try {
     try {
       const querySnapshot = await firestore.getDocs(firestore.collection(db, "musics"));
@@ -57,6 +57,7 @@ export async function getMusics(music, callBack) {
     }
     music.sort((a, b) => a.uid - b.uid);
     callBack(music)
+    callback2(music)
 
   } catch (e) {
     console.log(e)
@@ -89,6 +90,13 @@ export async function getMusicsliked(likedmusics, music, callBack) {
     console.log(e)
   }
 
+}
+
+export async function updateLikedMusic(uidUser, newLikedMusic) {
+  const ref = firestore.doc(db, "users", uidUser)
+  await firestore.updateDoc(ref, {
+    likedMusic: newLikedMusic
+  });
 }
 
 export async function getUserin4(uid, callback) {

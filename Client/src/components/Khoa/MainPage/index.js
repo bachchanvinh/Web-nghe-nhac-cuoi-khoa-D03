@@ -6,12 +6,13 @@ import Player from '../Player'
 import NextSong from '../NextSong'
 import Slider from '../Slider'
 import { getMusics } from '../../../controller/firebase/firestore'
+import { updateLikedMusic } from '../../../controller/firebase/firestore'
 import './style.css'
 
 const MainPage = (props) => {
   let [songs, updateSongs] = useState([]);
   const { userIn4, isLogin, onClickSignOut } = props
-  // const [userIn4, setUserIn4] = useState({})
+  const [songsall, setsongsall] = useState([])
   // const [isLogin, setIsLogin] = useState(false)
   const [keywordFilter, setKeywordFilter] = useState('')
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
@@ -23,17 +24,8 @@ const MainPage = (props) => {
 
   useEffect(() => {
     let data2 = []
-    getMusics(data2, () => { updateSongs(data2) })
+    getMusics(data2, () => { updateSongs(data2) }, () => { setsongsall(data2) })
     setSliderMusic(data2)
-    // getSignedIn().then((res) => {
-    //   if (typeof res === "string") {
-    //     setIsLogin(true)
-    //     getUserin4(res, setUserIn4)
-    //   }
-    //   else setIsLogin(false)
-    // })
-
-
   }, [])
 
   useEffect(() => {
@@ -53,24 +45,35 @@ const MainPage = (props) => {
 
   const onSearch = (key) => {
     setKeywordFilter(key.toLowerCase())
-  }
-
-  if (keywordFilter) {
-    let newSong = songs.filter((song) => song.name.toLowerCase().indexOf(keywordFilter) !== -1);
-    if (newSong.length > 0) {
-      songs = newSong
+    if (key === "") {
+      updateSongs(songsall)
+    }
+    else {
+      let newSong = songsall.filter((song) => song.name.toLowerCase().indexOf(key) !== -1);
+      if (newSong.length > 0) {
+        updateSongs(newSong)
+      }
     }
   }
+
+
 
   const onHandleAddSong = (song) => {
     props.setDataPlaylist(prev => {
       let checkSong = prev.find(item => item.name === song.name)
-      console.log(checkSong)
+      let songListUID = []
       if (checkSong) {
+        let songList = []
+        songList = [...prev]
+        songList.map((song) => songListUID.push(song.uid_name))
+        updateLikedMusic(userIn4.uid, songListUID)
         return [...prev]
       }
       song = { ...song, uid: prev.length + 1 }
+      // prev.map((ele) => console.log(ele.uid_name))
       let newSongs = [...prev, song]
+      newSongs.map((song) => songListUID.push(song.uid_name))
+      updateLikedMusic(userIn4.uid, songListUID)
       return newSongs
     })
   }

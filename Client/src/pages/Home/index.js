@@ -15,6 +15,8 @@ const Home = () => {
     const [userIn4, setUserIn4] = useState({})
     const [isLogin, setIsLogin] = useState(false)
     const [check, setCheck] = useState({})
+    const [isDisplayPlaylist, setIsDisplayPlaylist] = useState(false)
+    const [dataPlaylist, setDataPlaylist] = useState([])
     useEffect(() => {
         // console.log(check)
         getSignedIn(setCheck).then((res) => {
@@ -27,12 +29,13 @@ const Home = () => {
         })
     }, [check])
     const onClickSignOut = () => {
-        signOutfunc()
+        if (window.confirm('Bạn có chắc đăng xuất không?')) { signOutfunc() }
+        // console.log(dataPlaylist)
+        setDataPlaylist([])
         setIsLogin(false)
     }
     ///---------------Khoa-------------------------------------------------------------------
-    const [isDisplayPlaylist, setIsDisplayPlaylist] = useState(false)
-    const [dataPlaylist, setDataPlaylist] = useState([])
+
     useEffect(() => {
         let music = []
         getMusicsliked(userIn4.likedMusic, music, setDataPlaylist)
