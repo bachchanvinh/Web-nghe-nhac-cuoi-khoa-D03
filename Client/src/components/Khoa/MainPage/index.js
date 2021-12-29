@@ -14,7 +14,6 @@ const MainPage = (props) => {
   const { userIn4, isLogin, onClickSignOut } = props
   const [songsall, setsongsall] = useState([])
   // const [isLogin, setIsLogin] = useState(false)
-  const [keywordFilter, setKeywordFilter] = useState('')
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [nextSongIndex, setNextSongIndex] = useState(0);
   const [isActiveId, setIsActiveId] = useState(1)
@@ -44,7 +43,6 @@ const MainPage = (props) => {
   }
 
   const onSearch = (key) => {
-    setKeywordFilter(key.toLowerCase())
     if (key === "") {
       updateSongs(songsall)
     }

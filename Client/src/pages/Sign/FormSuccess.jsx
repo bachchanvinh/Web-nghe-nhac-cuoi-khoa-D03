@@ -12,7 +12,7 @@ const FormSuccess = () => {
       <img
         className="form-img-2__khai"
         src="img/img-2.png"
-        alt="success-image"
+        alt="success"
       />
        
     </div>

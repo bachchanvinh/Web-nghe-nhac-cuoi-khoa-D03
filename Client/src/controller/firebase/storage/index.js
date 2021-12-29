@@ -1,4 +1,3 @@
-import db from '../init'
 import * as firestorage from "firebase/storage";
 
 // import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -24,6 +23,8 @@ export const upLoadphoto = (filename, file) => {
                     case 'running':
                         console.log('Upload is running');
                         break;
+                    default :
+                        break
                 }
             },
             (error) => {

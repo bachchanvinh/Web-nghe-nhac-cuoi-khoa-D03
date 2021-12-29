@@ -29,7 +29,7 @@ export const signinFunc = (email, password) => {
     return authfire.signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in 
-            const user = userCredential.user;
+            // const user = userCredential.user;
             // console.log(user)
             console.log("signed in")
         })

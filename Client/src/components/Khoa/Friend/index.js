@@ -9,8 +9,6 @@ const Friend = (props) => {
     const [friendListUID, setFriendListUID] = useState([])
     const [userName, setUserName] = useState(undefined)
     const [friendListin4, setFriendListin4] = useState([])
-    const [outMenuChat, setOutMenuChat] = useState(false)
-
 
     useEffect(() => {
         setFriendListUID(userIn4.friendList)
@@ -25,7 +23,7 @@ const Friend = (props) => {
         <div className="friend-khoa">
             <div className="friend-heading">
                 <div className="friend-heading-title">Người liên hệ</div>
-                <p class="outMenuChat" onClick={handleOutMenuChat}>X</p>
+                <p className="outMenuChat" onClick={handleOutMenuChat}>X</p>
             </div>
             <div className="friend-wrap">
                 <div>{isLogin && <FriendComponent friendListin4={friendListin4} />}</div>

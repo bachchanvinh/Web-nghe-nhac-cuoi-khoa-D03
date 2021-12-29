@@ -4,13 +4,24 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
     faPlay,
     faPause,
+    faRedoAlt,
     faForward,
-    faBackward
+    faBackward,
+    faRandom
 }  from "@fortawesome/free-solid-svg-icons";
 
 const Control = (props) => {
     return (
         <div className="c-player--control">
+            <button className="skip-btn"
+                onClick={() => props.LoopSong()}
+                style={{marginRight:'1rem'}}
+            >
+                <div>
+                    <div>1</div>
+                    <FontAwesomeIcon icon={faRedoAlt}/>
+                </div>
+            </button>
             <button className="skip-btn"
                  onClick={() => props.SkipSong(false)}
             >
@@ -25,6 +36,12 @@ const Control = (props) => {
                 onClick={() => props.SkipSong()}
             >
                 <FontAwesomeIcon icon={faForward} />
+            </button>
+            <button className="skip-btn"
+            
+                style={{marginLeft:'1rem'}}
+            >
+                <FontAwesomeIcon icon={faRandom}/>
             </button>
         </div>
     )
