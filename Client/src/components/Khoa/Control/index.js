@@ -13,8 +13,9 @@ import {
 const Control = (props) => {
     return (
         <div className="c-player--control">
-            <button className="skip-btn"
-                onClick={() => props.LoopSong()}
+            <button className={props.actionLoop===true ? "skip-btn action" 
+                                                         : "skip-btn"}
+                onClick={() => props.setActionLoop(!props.actionLoop)}
                 style={{marginRight:'1rem'}}
             >
                 <div>
@@ -23,7 +24,7 @@ const Control = (props) => {
                 </div>
             </button>
             <button className="skip-btn"
-                 onClick={() => props.SkipSong(false)}
+                 onClick={() => props.SkipSong("skip", false)}
             >
                 <FontAwesomeIcon icon={faBackward}/>
             </button>
@@ -33,12 +34,13 @@ const Control = (props) => {
                 <FontAwesomeIcon icon={props.isPlaying ? faPause : faPlay} />
             </button>
             <button className="skip-btn"
-                onClick={() => props.SkipSong()}
+                onClick={() => props.SkipSong("skip")}
             >
                 <FontAwesomeIcon icon={faForward} />
             </button>
-            <button className="skip-btn"
-            
+            <button className={props.actionRandom===true ? "skip-btn action" 
+                                                         : "skip-btn"}
+                onClick={() => props.setActionRandom(!props.actionRandom)}
                 style={{marginLeft:'1rem'}}
             >
                 <FontAwesomeIcon icon={faRandom}/>
