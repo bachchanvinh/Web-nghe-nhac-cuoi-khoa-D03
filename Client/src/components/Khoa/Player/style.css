@@ -1,0 +1,23 @@
+.player-khoa {
+    flex:2;
+}
+
+.c-player--audio {
+    height:2rem;
+    width: 70rem;
+    margin-bottom: 1rem;
+}
+
+audio::-webkit-media-controls-play-button {
+    display: none;
+}
+
+
+@media (max-width: 790px){
+    .player-khoa{
+        width: 50%;
+    }
+    .c-player--audio {
+        width: 80%;
+    }
+}
