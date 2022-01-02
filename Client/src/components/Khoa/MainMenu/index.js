@@ -39,7 +39,7 @@ const MainMenu = (props) => {
                 </div>
                 <button className='sign-item' onClick={onClickSignOut} >Đăng xuất</button>
                 <div className="popup-chat" onClick={handleOpenChat}>
-                    <i class="far fa-comment-dots">Chat</i>
+                    <i className="far fa-comment-dots">Chat</i>
                 </div>
                 {openChat && <Friend userIn4={userIn4} isLogin={isLogin} handleOutMenuChat= {handleOutMenuChat} />}
             </div>
