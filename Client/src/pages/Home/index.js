@@ -48,6 +48,7 @@ const Home = () => {
         <div className="home-khoa">
             <SizeBarInfo
                 isDisplayPlaylist={isDisplayPlaylist}
+                isLogin={isLogin}
                 onHandleOpenPlaylist={onHandleOpenPlaylist} />
             {isDisplayPlaylist === false
                 ? <MainPage

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import './style.css'
 
 const SizeBarInfo = (props) => {
-    const { isDisplayPlaylist, onHandleOpenPlaylist } = props
+    const { isDisplayPlaylist, onHandleOpenPlaylist, isLogin } = props
 
     return (
         <div className="sizebar-khoa">
@@ -55,7 +55,8 @@ const SizeBarInfo = (props) => {
                 <div className="sizebar-menu">
                     <div className={isDisplayPlaylist === true
                         ? "sizebar-item active"
-                        : "sizebar-item"} onClick={() => onHandleOpenPlaylist()}>
+                        : "sizebar-item"} 
+                        onClick={isLogin ? () => onHandleOpenPlaylist() : () => false}>
                             <i className="details-like-icon-empty details-like-icon fas fa-heart"></i>
                             <span className="sizebar-item-text"
                             >Playlist đã thích</span>

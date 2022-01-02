@@ -53,6 +53,13 @@ a{
   margin: 0.3rem;
   position: relative;
   width: 200px;
+  display:flex;
+  align-items: center;
+  height:4rem;
+}
+
+.sizebar-khoa .sizebar-menu .sizebar-item .sizebar-item-text {
+  font-size:2rem;
 }
 
 .sizebar-khoa .sizebar-menu .sizebar-item:hover {
